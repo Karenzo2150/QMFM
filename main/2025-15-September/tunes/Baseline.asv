@@ -141,7 +141,7 @@ tunes.i(rngExog) = dbObs.obs_i(rngExog);
 rngExog = qq(2025, 4);
 pln = exogenize(pln,  rngExog, 'i');
 pln = endogenize(pln, rngExog, 'shock_i');
-tunes.i(rngExog) = 100 * log(1 + (6.75+0.3)/100);
+tunes.i(rngExog) = 100 * log(1 + (6.75 + 0.3)/100);
 
 %% GDP & demand: recall we run ext.filter 1-2 Q beyond data (2025Q3-4) with hist tunes y-on-y GDP growth fr Nowcast
 % we 'read' demand shocks for Q3-4, then set back filter-range to end datarange; soft-tune demand shocks 1-2Q ahead

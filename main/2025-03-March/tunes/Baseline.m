@@ -57,6 +57,7 @@ tuneNames = [
   "grev_y"
   "def_y"
   "grev_y_discr"
+  "oexp_y"
   "shock_oexp_y_discr"
   ];
 
@@ -111,35 +112,40 @@ tunes.l_enerstar(rngFcast)        = dbObs.obs_l_enerstar(rngFcast);
 % ----- NTFs ------
 %% CPI core, food, and energy q-o-q (dl) annualized growth hard-tuned using 2024Q2 observed data
 
-%1a. CORE hard-tune 2024Q3 data (note: these are s.a., see readData)
+%1a. CORE hard-tune 2025Q1 data (note: these are s.a., see readData)
 rngExog = qq(2025, 1);
 pln = exogenize(pln,  rngExog, 'dl_cpi');
 pln = endogenize(pln, rngExog, 'shock_dl_cpi_core');
 tunes.dl_cpi(rngExog) = dbObsTrans.obs_dl_cpi(rngExog);
 
-% 1b. CPI_food hard-tune with 2024Q3 data
+% 1b. CPI_food hard-tune with 2025Q1 data
 rngExog = qq(2025, 1);
 pln = exogenize(pln,  rngExog, 'dl_cpi_food');
 pln = endogenize(pln, rngExog, 'shock_dl_cpi_food');
 tunes.dl_cpi_food(rngExog) = dbObsTrans.obs_dl_cpi_food(rngExog);
 
-%1c. CPI_ener hard-tune with 2024Q3 data 
+%1c. CPI_ener hard-tune with 2025Q1 data 
 rngExog = qq(2025, 1);
 pln = exogenize(pln,  rngExog, 'dl_cpi_ener');
 pln = endogenize(pln, rngExog, 'shock_dl_cpi_ener');
 tunes.dl_cpi_ener(rngExog) = dbObsTrans.obs_dl_cpi_ener(rngExog);
 
 
-%% IB rate hard-tuned with full data, partial data (average of 2 mos thru Aug 2024),judgement
-% margin of interbank rate (that CBR aims to set) remains at its recent average of 0.7 
-% IB rate for 2024Q3 hard-tuned with data July-Aug (and CBR rate Aug 2024 to 6.5%, so av.Q3 6.8 + IB margin 0.7)  
+%% IB rate hard-tuned with full data, partial data (average of last 2-3 mos thru 2025Q1),and judgement for Q2
+% margin of IB rate (CBR aims to set) was 0.5-0.7%, dropped recently to 0.3%
+% IB rate for 2025Q1 hard-tuned with data; next Q judgement: assumed CBR rate unchanged + IB margin)  
 rngExog = qq(2025, 1);
 pln = exogenize(pln,  rngExog, 'i');
 pln = endogenize(pln, rngExog, 'shock_i');
-tunes.i(rngExog) = 100 * log(1 + 6.5/100);
+tunes.i(rngExog) = dbObs.obs_i(rngExog);
+%
+rngExog = qq(2025, 2);
+pln = exogenize(pln,  rngExog, 'i');
+pln = endogenize(pln, rngExog, 'shock_i');
+tunes.i(rngExog) = 100 * log(1 + 6.8/100);
 
-%% GDP & FD : recall, we ran ext.filter 2Q beyond data (ie 2024Q3-Q4) with historical tunes for y-on-y GDP growth fr Nowcast
-% we 'read' final demand shocks for those Q3-4, then set back filter range to end of data range; soft-tune FD shocks for first 2 Q in forecast
+%% GDP & FD : recall, we ran ext.filter 2Q beyond data (ie 2025Q1-2) with hist tunes y-on-y GDP growth fr Nowcast
+% we 'read' final demand shocks for Q1-2, then set back filter range to end datarange; soft-tune FD shocks for 2Q
 rngExog = qq(2025, 1) : qq(2025, 2);
 pln = exogenize(pln,  rngExog, 'd4l_y');
 pln = endogenize(pln, rngExog, 'shock_l_cons_gap');
@@ -147,10 +153,14 @@ tunes.d4l_y(rngExog) = 100 * log(1 + [7.3, 7.7]/100 ); % tune with nowcast of Se
 
 % soft-tune other-than-cons FD shocks, 'read' from filter results w.historical tuning of GDP (Nowcast)
 % filter distributes shocks among other FD, so that movement in GDP not only attributed to cons shock
-% rngExog = qq(2024,3) : qq(2024,4);
-tunes.shock_l_inv_gap(rngExog) = [ 1.0672,   0.47568]; % need to be read from ext.filter results
-tunes.shock_l_exp_gap(rngExog) = [ 2.3576,   1.0507]; % 
-tunes.shock_l_imp_gap(rngExog) = [-0.050016, -0.020597]; %
+rngExog = qq(2025,1) : qq(2025,2);
+tunes.shock_l_inv_gap(rngExog) = [ 0.38,    0.18]; % need to be read from ext.filter results
+tunes.shock_l_exp_gap(rngExog) = [ 0.83,    0.39]; % 
+tunes.shock_l_imp_gap(rngExog) = [-0.02,   -0.01]; %
+% soft-tune private investment shock, to reflect Bugesera (govt netLending, oexp) sum 5.6 GDP 2025/26-2026/27
+% but effect spread over 8Q, markup 1(investment/GDP)=1/0.15=6,take half
+rngExog = qq(2025,3) : qq(2027,2);
+tunes.shock_l_inv_gap(rngExog) = [3, 6, 7, 10, 10, 7, 6, 3];
 
 %% Exchange rate: hard-tune with data 
 rngExog = qq(2025, 1);
@@ -158,45 +168,48 @@ pln = exogenize(pln,  rngExog, 'l_s');
 pln = endogenize(pln, rngExog, 'shock_l_s');
 tunes.l_s(rngExog) = dbObs.obs_l_s(rngExog); % dbObs.obs_l_s(rngExog);
 
-% hard-tune ER level (l_s) or QoQ growth (dl_s) for 2024Q4 using NBR=IMF program (11.8% eop 2024)
-% or extrapolate actual path 2024 Jan-Sept (8% annualized depr with 2.8% obs for 2025Qo1 and 5.2% remaining for 3Qos) or info from NBR; base is log ER end-June 2024
+% hard-tune ER level (l_s) or QoQ growth (dl_s) for 2025Q2 using NBR=IMF program (8% eop 2025)
+% or extrapolate actual path 2025Q2 with 2025Q1 observed 2.8%, so 5.2% remains for 2025Q2-4; alt.: use info NBR
 rngExog = qq(2025, 2);
 pln = exogenize(pln,  rngExog, 'dl_s');
 pln = endogenize(pln, rngExog, 'shock_l_s');
-%tunes.l_s(rngExog) = 100*(log(1311.1) + log(1 + 0.09/4)); % ann.depr in 2024Q3 assumed 9% from end-June
-tunes.dl_s(rngExog) = 100 * log(1 + 0.052); % equivalent! tune dl_s and also added tune_dl_s to minecofin.odel
+%tunes.l_s(rngExog) = 100*(log(1311.1) + log(1 + 0.09/4)); % if level is tuned,eg w. annualized assumed depr.rate from last observed
+tunes.dl_s(rngExog) = 100 * log(1 + 0.052); % equivalent! tune dl_s (annualized!) we had to add tune_dl_s to minecofin.model
 
 %% Fiscal variables (follows FY), esp. deficit (GFS1986), govt demand G&S, revenue (so: other expend implicit)
-% forecast: fr Treasury plan but NOT YET; for now: using fiscal targets PCI-program 2024/25-2025/26 (May'24 review)
-% in July and Oct 2023 rounds, we didnot yet tune deficit forward assuming renegotiation of PCI
+% forecast: fr Treasury plan but NOT YET; for now: using fiscal targets PCI-program 2024/25-2025/26 (March'25 review)
+% in July-Oct 2023 rounds, we didnot yet tune deficit forward assuming renegotiation of PCI
 
 %% hard-tune deficit next years from PCI program 3d review May'24 (in addition, we could hard-tune gdem)
-% rngExog = qq(2025, 1) : qq(2029, 2);
-rngExog = qq(2025, 1) : qq(2027, 2);
+% PCI deficits: 2024/25: 8.6%; 2025/26: 10%; 2026/27: 8%; 2027/28: 6.1% of GDP
+rngExog = qq(2025, 1) : qq(2027, 4);
 pln = exogenize(pln,  rngExog, 'def_y');
 pln = endogenize(pln, rngExog, 'shock_gdem_y_discr');
-tunes.def_y(rngExog) = [8.3, 8.3, 8.4, 8.4, 9.9, 9.9, 11.9, 11.9, 8.4, 8.4];
-% tunes.def_y(rngExog) = [9, 9, 8.7, 8.7, 10, 10, 9.7, 8.7, 7.5, 7.5, 7.4, 7.4, 7.5, 7.5, 7.5, 7.4, 7.5, 7.4];%, 7.4, 7.4, 7.5, 7.5, 7.4, 7.4]; % FYann.8.9, 7.6, 6.5%; bit higher (lower) in 2d half FY2024-25 (2025/26)
-% tunes.shock_oexp_y_discr(rngExog) = -3,-3,-3,-3]; % tune only if good info on gdem, oexp NOT USED
+tunes.def_y(rngExog) = [7.8, 7.8, 14.2, 14.0, 6.0, 5.8, 9.3, 9.0, 7.2, 6.9, 6.4, 6.3];
 
+%% hard tune for govt other exp from FISCAL 2025/26-2027/28,for Q w. airport netLending, equal distr over Q
+rngExog = qq(2025, 3) : qq(2027, 2);
+pln = exogenize(pln,  rngExog, 'oexp_y');
+pln = endogenize(pln, rngExog, 'shock_oexp_y_discr');
+tunes.oexp_y(rngExog) = [12.5, 12.5, 4.6, 4.6, 7.5, 7.5, 5.8, 5.8];
 %% we could hard-tune discretionary rev/GDP reflecting below-trend non-tax revenue, lag revenue base to inflation, exemptions (for 2023)
-% rngExog = qq(2023, 3) : qq(2025, 2);
+% rngExog = qq(2025, 1) : qq(2025, 2);
 % pln = exogenize(pln,  rngExog, 'grev_y_discr');
 % pln = endogenize(pln, rngExog, 'shock_grev_y_discr');
 % tunes.grev_y_discr(rngExog) = [-1.0,-1.0,-0.9,-0.9,-0.8,-0.7,-0.6,-0.5]; % grev below trend both years NOT USED
 
-%% hard tune for govt revenue (tax/nontax) from PCI program each Q 2024/25-2025/26, equal distr over Q
-% rngExog = qq(2025, 1) : qq(2029, 2);
+%% hard tune for govt revenue (tax/nontax) from PCI program each Q 2024/25-2027/28, smoothen increase over all Q
+% PCI revenue: 2024/25: 18.3%; 2025/26: 18.8%; 2026/27: 19.7%; 2027/28: 20.3% of GDP
 rngExog = qq(2025, 1) : qq(2027, 4);
 pln = exogenize(pln,  rngExog, 'grev_y');
 pln = endogenize(pln, rngExog, 'shock_grev_y_discr');
-tunes.grev_y(rngExog) = [18.6, 18.6, 19.4, 19.4, 19.4, 19.4, 20.3, 20.3, 20.3, 20.3, 20.8, 20.8];
-% tunes.grev_y(rngExog) = [18.2, 18.2, 18.9, 18.9, 19, 19, 19.8, 19.9, 19.9,20.0, 19.9, 19.9, 20, 20.0, 20, 20.0, 20, 20.0]; % FYannual 18.4, 19.5% [20.1: 19.85,19.9,20.1,20.3%]
-% Option: tune Govt demand (gdem/gdp) using fiscal program 2023/24 with discr govt demand shock endogenous
-% rngExog = qq(2023, 3);
+tunes.grev_y(rngExog) = [18.5, 19.0, 18.5, 18.7, 18.9, 19.1, 19.3, 19.6, 19.8, 20.1, 20.2, 20.3];
+%
+% Optional: tune Govt demand (gdem/gdp) using PCI program with discr govt demand shock endogenous
+% rngExog = qq(2025, 1): qq(2027, 4);
 % pln = exogenize(pln,  rngExog, 'gdem_y');
 % pln = endogenize(pln, rngExog, 'shock_gdem_y_discr');
-% tunes.gdem_y(rngExog) = 100 * log(1 + 0/100);
+% tunes.gdem_y(rngExog) = [20.9,20.9,22.5,22.5,18.1,18.1,21.7,21.7,20.0,20.0,20.8,20.8]);%calc resiudally from def, rev, oexp
 
 end
 

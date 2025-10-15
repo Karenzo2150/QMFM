@@ -3,12 +3,11 @@ function fcast_histCharts
 % MINECOFIN Quarterly Macro-Fiscal Outlook 2023-26 QMFO, forecast part
 % QMFM team consisting of ES, EvM, SI, and AK, charts prepared in Jan-Feb, July-Sept 2023
 
-%% Settings
-
+%% 
+% Settings
 clear, clc, close all
 
 opts = mainSettings();
-
 
 % whatToPlot = "filter";
 % plotRange = opts.filterHistory.rangePlot;
@@ -182,11 +181,11 @@ codes.utils.saveEmf(opts, gcf, 'Consump_Decomposition');
 % Components of headline inflation: core, food and energy inflation series
 
 figure("visible", "on");
-plot(plotRange, db.dl_cpi, 'linewidth', 2 );%, 'color', 'r');
+plot(plotRange, db.dl_cpi, 'linewidth', 2 ); %, 'color', 'r');
 hold on
-plot(plotRange, db.dl_cpi_core, 'linewidth', 2);%, 'color', 'b'),...
-plot(plotRange, db.dl_cpi_food, 'linewidth', 2);%, 'color', 'g'),...
-plot(plotRange, db.dl_cpi_ener,'linewidth', 2);%, 'color', 'y'),...
+plot(plotRange, db.dl_cpi_core, 'linewidth', 2); %, 'color', 'b'),...
+plot(plotRange, db.dl_cpi_food, 'linewidth', 2); %, 'color', 'g'),...
+plot(plotRange, db.dl_cpi_ener,'linewidth', 2);  %, 'color', 'y'),...
 legend ('Headline','Core','Food', 'Energy','interpreter', 'none','Fontsize',12,...
   'orientation', 'horizontal', 'location', 'southoutside',...
   'interpreter', 'none');
@@ -824,9 +823,9 @@ title('Real GDP, 100*log','interpreter', 'none','FontSize', 12);
 %%
 %%Real GDP trend and level (100*log)
 figure("visible", "on");
-plot(plotRange, db.d4l_y, 'linewidth', 2);
+plot(plotRange, db.l_y, 'linewidth', 2);
 hold on
-plot(plotRange, db.d4l_y_tnd, 'linewidth', 2);
+plot(plotRange, db.l_y_tnd, 'linewidth', 2);
 zeroline;
 grid on
 highlight(HighRange); %,'EdgeColor','m','LineWidth',1.5);
@@ -894,7 +893,7 @@ figure("visible", "on", 'Units', 'normalized', 'Position', [0.1, 0.1, 0.8, 0.8])
 subplot(3,3,1);
 windowSize = 10;
 plot(plotRange, forecComp.d4l_cpi, 'linewidth', 2);
-title('Real GDP, YY%','interpreter', 'none','FontSize',10);
+title('Headline CPI, YY%','interpreter', 'none','FontSize',10);
 legend (optsCurr.roundId, optsCurr.compRound, 'interpreter', 'none','Fontsize',9,...
     'location', 'northwest', 'orientation', 'vertical');
 highlight(HighRange);
@@ -939,6 +938,11 @@ grid on
 
 fileName = "MainIndicators";
 codes.utils.saveEmf(opts, gcf, fileName)
+
+%%
+plot(plotRange, db.d4l_s, 'linewidth', 2);
+title ('Nomial Exchange Rate, YoY%','interpreter', 'none','FontSize',10);
+highlight(HighRange);
 %close all
 end
 

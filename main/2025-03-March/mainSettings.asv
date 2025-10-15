@@ -191,7 +191,7 @@ opts.reportModel.varDecomp.variables  = [...
 opts.reportModel.varDecomp.contribs   = 6;
 
 % Historical range of vardecomp
-opts.reportModel.varDecomp.histRange = qq(2006, 1) : qq(2024, 2);
+opts.reportModel.varDecomp.histRange = qq(2006, 1) : qq(2023, 2);
 
 % Variables in the standard deviation comparison
 opts.reportModel.stdComp.variables  = [
@@ -266,7 +266,7 @@ opts.reportModel.stdComp.shocks = [
   ];
 
 % Range of comparison
-opts.reportModel.stdComp.range = qq(2006, 1) : qq(2024, 4);
+opts.reportModel.stdComp.range = qq(2006, 1) : qq(2023, 2);
 
 %% Historical filter options
 
@@ -367,7 +367,7 @@ opts.filterHistory.shockDecompVars = [
   ];
 
 % Table range
-opts.filterHistory.rangeTable = qq(20, 4) : opts.filterHistory.range(end); % default 2024Q2; extend filter for shocktuning, +2Q
+opts.filterHistory.rangeTable = qq(2019, 4) : opts.filterHistory.range(end); % default 2024Q2; extend filter for shocktuning, +2Q
 
 % Plot range
 opts.filterHistory.rangePlot = qq(2015, 1) : opts.filterHistory.range(end); % same
@@ -455,8 +455,7 @@ opts.filterHistory.shockDecompGroups.Rest = "Init/determ.";
 %% Historical forecast options
 
 % Range of historical forecast
-% opts.histForecast.range = qq(2016,1) : qq(2024,2);
-opts.histForecast.range = qq(2022, 4) : qq(2024, 1);
+opts.histForecast.range = qq(2022, 4) : qq(2023, 2);
 
 % Horizon of historical forecast
 opts.histForecast.horizon = 8;
@@ -552,17 +551,16 @@ opts.forecast.shockDecompRange = qq(2006, 1) : qq(2028, 4);
 %% Report forecast options
 
 % Range of the graphs in the forecast report
-opts.forecastReport.plotRange = qq(2017, 1) : qq(2028, 4); % extended 2028Q4
+opts.forecastReport.plotRange = qq(2017, 1) : opts.forecast.range(end); % extended 2028Q4
 
 % Range of the highlighted area i.e. highlight recent past
 opts.forecastReport.highlightRange = opts.forecast.range; 
 
 % Range of the tables in the forecast report
-opts.forecastReport.tableRange = qq(2023, 1) : qq(2028, 4); % extend 2028Q4
+opts.forecastReport.tableRange = qq(2025, 1) : opts.forecast.range(end); % extend 2028Q4
 
 % Range for annualized series
 opts.forecastReport.tableRange_ann = yy(2021) : yy(2028);
-
 %% Process options
 
 opts.mainDir = string(fileparts(mfilename("fullpath")));

@@ -126,11 +126,11 @@ db = dboverlay(gpm, db); % enerstar exists in both datab, it takes 2d; if we wan
 
 rngAdj = qq(1995, 1) : qq(2021,4); % 12/12/23 was (2019,2)
 db.nginv(rngAdj) = 0.8 * db.nginv(rngAdj);
-rngAdj1 = qq(2022, 1) : opts.filterHistory.rangePlot(end); % 0.75 corr fr 2022 pending NA corr ADJUST THIS EACH RUN
+rngAdj1 = qq(2022, 1) : opts.filterHistory.range(end); % 0.75 corr fr 2022 pending NA corr ADJUST THIS EACH RUN
 db.nginv(rngAdj1) = 0.75 * db.nginv(rngAdj1); 
 
 %-------- adj for outlier govtCons NA 2019Q2 ----(pending NISR NA adj)
-rngAdj = qq(2019, 2) : qq(2019,2); % 1/19/24 ak 
+rngAdj = qq(2019, 2) : qq(2019, 2); % 1/19/24 ak 
 pgcons = db.ngcons(rngAdj) / db.gcons(rngAdj); % calc deflator
 ngconsAdj = 80;
 db.ngcons(rngAdj) = db.ngcons(rngAdj) - ngconsAdj; % adjust nom gcons, see below for adj inv
@@ -291,15 +291,16 @@ db.debt_y       = 100 * db.ndebt      / db.ny;
 % !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 % !!! Temporary fix Sept11'24 as pb w NISR data first thru 2024Q1 then thru 2024Q2
-db.cons(qq(2023, 3) : qq(2024,  4))   = NaN;
-db.inv(qq(2023,  3) : qq(2024,  4))   = NaN;
-db.exp(qq(2023,  3) : qq(2024,  4))   = NaN;
-db.imp(qq(2023,  3) : qq(2024,  4))   = NaN;
-db.gdem(qq(2023, 3) : qq(2024,  4))   = NaN;
-% EvM approach
-% db.exp(qq(2023, 3) : qq(2024, 2))   = NaN;
-% db.imp(qq(2023, 3) : qq(2024, 2))   = NaN;
+db.cons(qq(2023, 3) : qq(2025,  1))   = NaN;
+db.inv(qq(2023,  3) : qq(2025,  1))   = NaN;
+db.exp(qq(2023,  3) : qq(2025,  1))   = NaN;
+db.imp(qq(2023,  3) : qq(2025,  1))   = NaN;
+db.gdem(qq(2023, 3) : qq(2025,  1))   = NaN;
 
+% Supress NA sup GDP to use filter results or forecasts
+db.y(qq(2025, 2) : qq(2025, 2))       = NaN;
+db.ny(qq(2025, 2) : qq(2025, 2))      = NaN;
+db.y_agr(qq(2025, 2) : qq(2025, 2))   = NaN;
 % !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 % ----Seasonal adjustment:most transition variables (except i), some aux.variables (except debt)----
@@ -372,7 +373,7 @@ varNames = [
   ];
 
 for v = varNames(:)'
-  db.(v + "_sa") = x12(db.(v), "Missing", true);
+  db.(v + "_sa") = x13(db.(v), "Missing", true);
 end
 
 % ----- Logarithm, growth rates -----

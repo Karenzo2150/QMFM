@@ -10,13 +10,13 @@ clear, clc, close all
 opts = mainSettings();
 
 
-whatToPlot = "filter";
-plotRange = opts.filterHistory.rangePlot;
-HighRange = opts.reportHistory.highlightRange;
+% whatToPlot = "filter";
+% plotRange = opts.filterHistory.rangePlot;
+% HighRange = opts.reportHistory.highlightRange;
 
-% whatToPlot = "forecast";
-% plotRange = opts.forecastReport.plotRange;
-% HighRange = opts.forecast.range; 
+whatToPlot = "forecast";
+plotRange = opts.forecastReport.plotRange;
+HighRange = opts.forecast.range; 
 
 %===========================================================================================================================================================================================
 %% Setup data
@@ -45,10 +45,10 @@ switch whatToPlot
     dbDecomp = tmp.dbEqDecomp;
 
     % plot main indicators for forecast rounds comparison
-    tmp = codes.utils.loadResult(opts, "forecastCompare");
-    forecComp = tmp.dbCompFcast;
-    optsCurr  = mainSettings();
-    tmp = codes.utils.loadResult(optsCurr, "forecast");
+    % tmp = codes.utils.loadResult(opts, "forecastCompare");
+    % forecComp = tmp.dbCompFcast;
+    % optsCurr  = mainSettings();
+    % tmp = codes.utils.loadResult(optsCurr, "forecast");
 end
 %=========================================================================================================================================================================
 %% For forecast charts
@@ -182,11 +182,11 @@ codes.utils.saveEmf(opts, gcf, 'Consump_Decomposition');
 % Components of headline inflation: core, food and energy inflation series
 
 figure("visible", "on");
-plot(plotRange, db.dl_cpi, 'linewidth', 2 );%, 'color', 'r');
+plot(plotRange, db.dl_cpi, 'linewidth', 2 ); %, 'color', 'r');
 hold on
-plot(plotRange, db.dl_cpi_core, 'linewidth', 2);%, 'color', 'b'),...
-plot(plotRange, db.dl_cpi_food, 'linewidth', 2);%, 'color', 'g'),...
-plot(plotRange, db.dl_cpi_ener,'linewidth', 2);%, 'color', 'y'),...
+plot(plotRange, db.dl_cpi_core, 'linewidth', 2); %, 'color', 'b'),...
+plot(plotRange, db.dl_cpi_food, 'linewidth', 2); %, 'color', 'g'),...
+plot(plotRange, db.dl_cpi_ener,'linewidth', 2);  %, 'color', 'y'),...
 legend ('Headline','Core','Food', 'Energy','interpreter', 'none','Fontsize',12,...
   'orientation', 'horizontal', 'location', 'southoutside',...
   'interpreter', 'none');
@@ -214,19 +214,19 @@ grid on
 
 hold on
 subplot(2,2,2);
-plot(plotRange, db.d4l_cpi_core, 'linewidth', 2);
+plot(plotRange, [db.d4l_cpi_core, db.d4l_cpi_core_tar], 'linewidth', 2);
 title ('Core (Headline excl. food & energy) CPI, YY%','interpreter', 'none','FontSize',12);
 highlight(HighRange);
 grid on
 
 subplot(2,2,3); %'Position', [0.0, 0.0, 0.8, 0.4]);
-plot(plotRange, db.d4l_cpi_food, 'linewidth', 2);
+plot(plotRange, [db.d4l_cpi_food, db.d4l_cpi_food_tar],'linewidth', 2);
 title ('Food (fresh food & non-alchoholic beverages) CPI, YY%,', 'interpreter', 'none','FontSize',12);
 highlight(HighRange),... 
 grid on
 
 subplot(2,2,4);
-plot(plotRange, db.d4l_cpi_ener, 'linewidth', 2);
+plot(plotRange, [db.d4l_cpi_ener , db.d4l_cpi_ener_tar],'linewidth', 2);
 title ('Energy CPI, YY%','interpreter', 'none','FontSize', 12);
 highlight(HighRange);
 grid on
@@ -283,7 +283,7 @@ figure("visible", "on");
 plot(plotRange, db.dl_s, 'linewidth', 2); %'color', 'k');
 hold on
 plot(plotRange, db.dl_s_tar, 'linewidth', 2); %'color', 'r'),...
-  legend ('Nominal', 'Target', 'interpreter', 'none','Fontsize',10,...
+  legend ('Nominal Level', 'Target', 'interpreter', 'none','Fontsize',10,...
       'location', 'southoutside', 'orientation', 'horizontal', 'fontsize', 12);
 zeroline;
 ylim ([-1,21]);
@@ -299,15 +299,15 @@ codes.utils.saveEmf(opts, gcf, fileName);
 % RER equals nom ER + diff between foreign inflation and dom. core inflation
 
 figure("visible", "on");
-plot(plotRange, db.d4l_z, 'linewidth', 2); %match color with next chart
+plot(plotRange, db.l_z, 'linewidth', 2); %match color with next chart
 hold on
-plot(plotRange, db.d4l_z_tnd, 'linewidth', 2);
+plot(plotRange, db.l_z_tnd, 'linewidth', 2);
 zeroline;
 grid on
 highlight(HighRange); %,'EdgeColor','m','LineWidth',1.5);
 legend ('Level','Trend', 'interpreter', 'none',...
     'location', 'southoutside', 'orientation', 'horizontal', 'fontsize', 12);
-title('Real Exchange Rate (RER), YY%', 'interpreter', 'none', 'FontSize',12);
+title('Real Exchange Rate (RER), 100*log', 'interpreter', 'none', 'FontSize',12);
 fileName = "RER_QQ %";
 codes.utils.saveEmf(opts, gcf, fileName);
 
@@ -316,17 +316,17 @@ codes.utils.saveEmf(opts, gcf, fileName);
 % Generate RER components per model eq.: l_z = l_s + l_cpistar - l_cpi_core;
 
 figure("visible", "on");
-RER_compon = [db.dl_s,...
-  + db.dl_cpistar,...
-  - db.dl_cpi_core];
+RER_compon = [db.d4l_s,...
+  + db.d4l_cpistar,...
+  - db.d4l_cpi_core];
 barcon(plotRange,RER_compon,'colormap', parula)
 hold on
 grid on
-plot(plotRange, db.dl_z, 'linewidth', 1, 'color', 'k');
-legend ('Nominal ER', 'CPI_star','CPI_core', 'interpreter','none',...
+plot(plotRange, db.d4l_z, 'linewidth', 1, 'color', 'k');
+legend ('ER, Nominal', 'CPI, Foreign','CPI, Core', 'interpreter','none',...
   'location', 'southoutside', 'orientation', 'horizontal', 'fontsize', 12);
 highlight(HighRange)
-title('Real Exchange Rate components, Q-on-Q % (dl_z)', 'fontsize', 12,...
+title('Real Exchange Rate (RER), YY%', 'fontsize', 12,...
   'interpreter','none');
 fileName = "RER_decomp";
 codes.utils.saveEmf(opts, gcf, fileName);
@@ -436,9 +436,25 @@ grid on
 
 ylim([0,11]);
 highlight(HighRange) %,'EdgeColor','m','LineWidth',1.5);
-title('Policy Rate (IB Rate), Nominal %', 'FontSize',12,...
+title('Policy Rate (IB Rate), %', 'FontSize',12,...
   'interpreter', 'none');
 fileName = "IB_core_RIR";
+codes.utils.saveEmf(opts, gcf, fileName);
+figure("visible", "off");
+%%
+RIR_compon = [db.i,...
+  - db.e_dl_cpi_core{+1}];
+barcon(plotRange,RIR_compon,'colormap', parula)
+hold on
+grid on
+plot(plotRange, db.r, 'linewidth', 3, 'color', 'w');
+plot(plotRange, db.r, 'linewidth', 1, 'color', 'k');
+legend ('ER, Nominal', 'CPI, Core+', 'interpreter','none',...
+  'location', 'southoutside','orientation', 'horizontal', 'fontsize', 12);
+highlight(HighRange)
+title('Real Interest Rate (RIR) Components, %', 'fontsize', 12,...
+  'interpreter','none');
+fileName = "RIR_decomp";
 codes.utils.saveEmf(opts, gcf, fileName);
 
 %=================================================================================================================================================================================
@@ -477,6 +493,18 @@ title('Real Interest Rate, %', 'FontSize', 12);
 fileName = "real_int_ratesF";
 codes.utils.saveEmf(opts, gcf, fileName);
 
+figure("visible", "on");
+plot(plotRange, db.r4_gap, 'linewidth', 2);
+
+hold on
+plot(plotRange, db.r_tnd, 'linewidth', 2);
+highlight(HighRange);
+legend ('Level','Trend',...
+    'location', 'southoutside','orientation', 'horizontal','interpreter', 'none');
+grid on
+title('Real Interest Rate (Lending, Expected 4Q+, gap), %', 'FontSize', 12);
+fileName = "real_int_ratesF";
+codes.utils.saveEmf(opts, gcf, fileName);
 %================================================================================================================================================================================
 %% Fiscal indicators
 % Output gap vs fiscal impulse (fisc_imp)
@@ -668,7 +696,7 @@ title('Budget Deficit, %GDP', 'interpreter', 'none','FontSize', 12)
 
 %====================================================================================================================0=================================
 %% some ad-hoc charts:
-
+%Govt demand vs. trend
 figure("visible", "on");
 plot(plotRange, db.gdem_y, 'linewidth', 2);
 
@@ -804,7 +832,7 @@ grid on
 highlight(HighRange); %,'EdgeColor','m','LineWidth',1.5);
 legend ('Level', 'Trend', 'interpreter', 'none','Fontsize',10,...
     'location', 'southoutside', 'orientation', 'horizontal');
-title('Real GDP, 100*log','interpreter', 'none','FontSize',12);
+title('Real GDP Growth (YoY%, 100*log','interpreter', 'none','FontSize',12);
 
 %%
 %Forecast 
@@ -866,7 +894,7 @@ figure("visible", "on", 'Units', 'normalized', 'Position', [0.1, 0.1, 0.8, 0.8])
 subplot(3,3,1);
 windowSize = 10;
 plot(plotRange, forecComp.d4l_cpi, 'linewidth', 2);
-title('Real GDP, YY%','interpreter', 'none','FontSize',10);
+title('Headline CPI, YY%','interpreter', 'none','FontSize',10);
 legend (optsCurr.roundId, optsCurr.compRound, 'interpreter', 'none','Fontsize',9,...
     'location', 'northwest', 'orientation', 'vertical');
 highlight(HighRange);
@@ -911,6 +939,11 @@ grid on
 
 fileName = "MainIndicators";
 codes.utils.saveEmf(opts, gcf, fileName)
+
+%%
+plot(plotRange, db.l_y_gap, 'linewidth', 2);
+title ('Output gap (Cyclical position of GDP, %)','interpreter', 'none','FontSize',10);
+highlight(HighRange);
 %close all
 end
 

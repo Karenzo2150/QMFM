@@ -910,15 +910,16 @@ dl_rp_enerstar_tnd = r_rp_enerstar_tnd * dl_rp_enerstar_tnd{-1} + (1 - r_rp_ener
   gdem_y_cyc, oexp_y_cyc, grev_y_cyc
   grev_y_discr, oexp_y_discr, gdem_y_discr
   l_y_tnd, l_cons_tnd, l_inv_tnd, l_gdem_tnd, l_exp_tnd, l_imp_tnd
-  l_y_gap, l_cons_gap, l_inv_gap, l_gdem_gap, l_exp_gap, l_imp_gap, l_y_agr_gap
-  l_y, d4l_y
   d4l_cpi_tar, l_rp_cpi_food_tnd, l_rp_cpi_ener_tnd
   dl_cpi_core, dl_cpi_food, dl_cpi_ener, dl_cpi
-  l_cpi_core, l_cpi, l_cpi_food, l_cpi_ener
   r_tnd, l_z_tnd, prem, dl_s_tar
   def_y_str, def_y_discr, grants_y
-  l_z_gap, dl_s, l_s
-   
+  l_y_gap, l_cons_gap, l_inv_gap, l_gdem_gap, l_exp_gap, l_imp_gap
+  l_y_agr_gap
+  l_z_gap
+  l_y, d4l_y
+  dl_s
+  l_cpi_core
 !do
   !measurement_variables
     tune_?
@@ -933,7 +934,6 @@ dl_rp_enerstar_tnd = r_rp_enerstar_tnd * dl_rp_enerstar_tnd{-1} + (1 - r_rp_ener
   shock_dl_cons_tnd
   shock_dl_cpi_ener
   shock_dl_cpi_core
-  shock_dl_cpi_food
 !do
   !transition_variables
     aux_?
@@ -1021,7 +1021,8 @@ ngdem   = exp(log(ngdem{-1}) + (dl_ngdem/100)/4); % idem
 ncons   = exp(log(ncons{-1}) + dl_ncons/100/4); % 4/19/23 AK for ratios
 ninv    = exp(log(ninv{-1}) + dl_ninv/100/4);
 
-tb_rat  = (nexp - nimp) / ny *100;
+%tb_rat  = (nexp - nimp) / ny *100; ak 3/29/2025: alt. in real terms:
+tb_rat  = 100*(exp(l_exp/100) - exp(l_imp/100))/exp(l_y/100);
 
 % Capital account (Ostry/Ghosh/Chamon,2012:log(BP)=k; define rstar here, not done in model)
 % 7/14/23 trend eq for ss cumul capital inflows in line with real GDP, instead of k_bar

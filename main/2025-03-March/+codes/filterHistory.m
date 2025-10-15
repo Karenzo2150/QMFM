@@ -136,6 +136,9 @@ for n = varNames(:)'
   dbAux.("pct4_" + n)  = 100*exp(dbFilt.mean.("d4l_" + n)/100) - 100;
 end
 
+dbAux.tb_rat = 100*(exp(dbFilt.mean.l_exp/100) - exp(dbFilt.mean.l_imp/100))/exp(dbFilt.mean.l_y/100); 
+% AK Mar29 2025 recalc res.bal. (cf. Aux. in ReadData) from filter results for missing data E, M
+
 dbAux.pct_i = 100 * (exp(dbFilt.mean.i/100) - 1);
 
 % -------- Save results --------

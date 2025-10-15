@@ -10,7 +10,7 @@ opts.roundId        = "2025 March Forecast";
 opts.modelFile      = "minecofin";
 opts.mainDataFile   = "2025-03-22"; % name of data/Rwametric file 
 opts.addDataFile    = "2025-03-20"; % has CBO proj RIR-US and old GTM numbers
-opts.compRound      = "main/2024-11-Nov"; % comparison round
+opts.compRound      = "main/2025-03-MarchAK"; % comparison round
 
 opts.resultsOutside = 0;
 
@@ -367,10 +367,10 @@ opts.filterHistory.shockDecompVars = [
   ];
 
 % Table range
-opts.filterHistory.rangeTable = qq(2021, 4) : opts.filterHistory.range(end); % default 2024Q2; extend filter for shocktuning, +2Q
+opts.filterHistory.rangeTable = qq(2019, 4) : opts.filterHistory.range(end); % default 2024Q2; extend filter for shocktuning, +2Q
 
 % Plot range
-opts.filterHistory.rangePlot = qq(2016, 1) : opts.filterHistory.range(end); % same
+opts.filterHistory.rangePlot = qq(2015, 1) : opts.filterHistory.range(end); % same
 
 % Highlight range for recent period after COVID for reportHistory
 opts.reportHistory.highlightRange = qq(2021, 1) : opts.filterHistory.rangePlot(end);
@@ -455,8 +455,7 @@ opts.filterHistory.shockDecompGroups.Rest = "Init/determ.";
 %% Historical forecast options
 
 % Range of historical forecast
-% opts.histForecast.range = qq(2016,1) : qq(2024,2);
-opts.histForecast.range = qq(2016, 4) : qq(2023, 2);
+opts.histForecast.range = qq(2022, 4) : qq(2023, 2);
 
 % Horizon of historical forecast
 opts.histForecast.horizon = 8;
@@ -542,12 +541,12 @@ opts.histForecast.exogvars = [
 opts.forecast.range = qq(2025, 1) : qq(2029, 4); % extended forward each Q if new data
  
 opts.forecast.scenarioNames = ...
-    ["Baseline"];%,"Alternative"];
+    ["Baseline"];%, "Alternative"];
 
 opts.forecast.scenarioLegends = []; % scenarioNames will be used if this is empty
 
 % Forecast shock decomposition range
-opts.forecast.shockDecompRange = qq(2006, 1) : opts.forecast.range(end);
+opts.forecast.shockDecompRange = qq(2006, 1) : qq(2028, 4);
 
 %% Report forecast options
 
@@ -562,7 +561,6 @@ opts.forecastReport.tableRange = qq(2025, 1) : opts.forecast.range(end); % exten
 
 % Range for annualized series
 opts.forecastReport.tableRange_ann = yy(2021) : yy(2028);
-
 %% Process options
 
 opts.mainDir = string(fileparts(mfilename("fullpath")));
