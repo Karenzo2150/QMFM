@@ -6,11 +6,11 @@ function opts = mainSettings
 
 %% General options
 
-opts.roundId        = "2025 Sept Forecast";
+opts.roundId        = "2025 March Forecast";
 opts.modelFile      = "minecofin";
-opts.mainDataFile   = "2025-15-10"; % name of data/Rwametric file 
-opts.addDataFile    = "2025-09-15"; % has CBO proj RIR-US and old GTM numbers
-opts.compRound      = "main/2025-03-March"; % comparison round
+opts.mainDataFile   = "2025-03-22"; % name of data/Rwametric file 
+opts.addDataFile    = "2025-03-20"; % has CBO proj RIR-US and old GTM numbers
+opts.compRound      = "main/2024-11-Nov"; % comparison round
 
 opts.resultsOutside = 0;
 
@@ -191,7 +191,7 @@ opts.reportModel.varDecomp.variables  = [...
 opts.reportModel.varDecomp.contribs   = 6;
 
 % Historical range of vardecomp
-opts.reportModel.varDecomp.histRange = qq(2006, 1) : qq(2023, 4);
+opts.reportModel.varDecomp.histRange = qq(2006, 1) : qq(2023, 2);
 
 % Variables in the standard deviation comparison
 opts.reportModel.stdComp.variables  = [
@@ -266,19 +266,19 @@ opts.reportModel.stdComp.shocks = [
   ];
 
 % Range of comparison
-opts.reportModel.stdComp.range = qq(2006, 1) : qq(2023, 4);
+opts.reportModel.stdComp.range = qq(2006, 1) : qq(2023, 2);
 
 %% Historical filter options
 
 % Filtered range
-opts.filterHistory.range = qq(2006, 1) : qq(2025, 2); % default 2024Q2 if data; extend filter for shocktuning +2Q
+opts.filterHistory.range = qq(2006, 1) : qq(2024, 4); % default 2024Q2 if data; extend filter for shocktuning +2Q
 
 % Variables whose trend/gap decomposition is plotted; AK: can't add variables w/o changing reporting codes
 opts.filterHistory.trendGapVars = [
   "l_cons",         "l_cons_tnd",         "l_cons_gap"; ...
   "l_inv",          "l_inv_tnd",          "l_inv_gap"; ...
   "l_gdem",         "l_gdem_tnd",         "l_gdem_gap"; ...
-  "l_exp",          "l_exp_tnd",         "l_exp_gap"; ...
+  "l_exp",          "l_exp_tnd",          "l_exp_gap"; ...
   "l_imp",          "l_imp_tnd",          "l_imp_gap"; ...
   "l_y",            "l_y_tnd",            "l_y_gap"; ...
   "d4l_cpi",        "d4l_cpi_tar",        ""; ...
@@ -538,7 +538,7 @@ opts.histForecast.exogvars = [
 %% Forecast options
 
 % Horizon of forecast
-opts.forecast.range = qq(2025, 3) : qq(2029, 4); % extended forward each Q if new data
+opts.forecast.range = qq(2025, 1) : qq(2029, 4); % extended forward each Q if new data
  
 opts.forecast.scenarioNames = ...
     ["Baseline"];%, "Alternative"];
@@ -557,7 +557,7 @@ opts.forecastReport.plotRange = qq(2017, 1) : opts.forecast.range(end); % extend
 opts.forecastReport.highlightRange = opts.forecast.range; 
 
 % Range of the tables in the forecast report
-opts.forecastReport.tableRange = qq(2025, 3) : opts.forecast.range(end); % extend 2028Q4
+opts.forecastReport.tableRange = qq(2025, 1) : opts.forecast.range(end); % extend 2028Q4
 
 % Range for annualized series
 opts.forecastReport.tableRange_ann = yy(2021) : yy(2028);

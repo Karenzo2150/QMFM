@@ -1,4 +1,4 @@
-function [tunes, pln, m] = Baseline(opts, m)
+function [tunes, pln, m] = Baseline_ak(opts, m)
 
 % -------- Load data --------
 
@@ -183,16 +183,16 @@ tunes.dl_s(rngExog) = 100 * log(1 + 0.029 * 4); % equivalent! tune dl_s (annuali
 %% hard-tune deficit from PCI program 5th review May'25 (NB in addition, we could hard-tune gdem)
 % PCI deficits: 2025/26: 10%; 2026/27: 8%; 2027/28: 6.1% of GDP and
 % semester breakdown
-rngExog = qq(2025, 3) : qq(2028, 2);
+rngExog = qq(2025, 3) : qq(2027, 4);
 pln = exogenize(pln,  rngExog, 'def_y');
 pln = endogenize(pln, rngExog, 'shock_gdem_y_discr');
-tunes.def_y(rngExog) = [5.5, 5.4, 9.3, 9.1, 6.2, 5.9, 5.6, 5.4, 5.5, 5.4, 4.7, 4.7];
+tunes.def_y(rngExog) = [14.2, 14.0, 6.0, 5.8, 9.3, 9.0, 7.2, 6.9, 6.4, 6.3];
 
 %% hard tune for govt other exp from FISCAL 2025/26-2027/28,for Q w. airport netLending, equal distr over Q
-rngExog = qq(2025, 3) : qq(2028, 2);
+rngExog = qq(2025, 3) : qq(2027, 4);
 pln = exogenize(pln,  rngExog, 'oexp_y');
 pln = endogenize(pln, rngExog, 'shock_oexp_y_discr');
-tunes.oexp_y(rngExog) = [6.2, 6.2, 6.8, 6.8, 5.7, 5.7, 5.8, 5.8, 5.3, 5.3, 4.5, 4.5];
+tunes.oexp_y(rngExog) = [12.5, 12.5, 4.6, 4.6, 7.5, 7.5, 5.8, 5.8, 4.8, 4.8];
 %% we could hard-tune discretionary rev/GDP reflecting below-trend non-tax revenue, lag revenue base to inflation, exemptions (for 2023)
 % rngExog = qq(2025, 3) : qq(2025, 4);
 % pln = exogenize(pln,  rngExog, 'grev_y_discr');
@@ -201,10 +201,10 @@ tunes.oexp_y(rngExog) = [6.2, 6.2, 6.8, 6.8, 5.7, 5.7, 5.8, 5.8, 5.3, 5.3, 4.5, 
 
 %% hard tune for govt revenue (tax/nontax) from PCI program each Q 2024/25-2027/28, smoothen increase over all Q
 % PCI revenue: 2025/26: 18.8%; 2026/27: 19.7%; 2027/28: 20.3% of GDP
-rngExog = qq(2025, 3) : qq(2028, 2);
+rngExog = qq(2025, 3) : qq(2027, 4);
 pln = exogenize(pln,  rngExog, 'grev_y');
 pln = endogenize(pln, rngExog, 'shock_grev_y_discr');
-tunes.grev_y(rngExog) = [18.5, 18.7, 18.9, 19.1, 19.3, 19.6, 19.8, 20.1, 20.2, 20.3, 20.4, 20.4];
+tunes.grev_y(rngExog) = [18.5, 18.7, 18.9, 19.1, 19.3, 19.6, 19.8, 20.1, 20.2, 20.3];
 %
 % Optional: tune Govt demand (gdem/gdp) using PCI program with discr govt demand shock endogenous
 % rngExog = qq(2025, 1): qq(2027, 4);
