@@ -157,10 +157,11 @@ tunes.shock_l_inv_gap(rngExog) = -3.28; % Need to be read from ext.filter result
 tunes.shock_l_exp_gap(rngExog) = -7.27; % 
 tunes.shock_l_imp_gap(rngExog) =  0.09; % 
 
-% soft-tune private investment shock, to reflect Bugesera (gov netLending,oexp) sum 5.2%GDP 2025/26-2027/28
+% soft-tune private investment shock, to reflect Bugesera (gov netLending,oexp) sum 5.2% GDP 2025/26-2027/28
+% Additonal to Qatar equity investiment 
 % but effect spread over 12Q, markup 1/(investment/GDP)=1/0.15=6,take about half
 rngExog = qq(2025, 3) : qq(2028, 2);
-tunes.shock_l_inv_gap(rngExog) = [4.2, 5.5, 7.5, 8.5, 8.5, 7.5, 5.5, 4.2, 4.1, 4.1, 4.1, 4.1];
+tunes.shock_l_inv_gap(rngExog) = [8.9, 11.7, 15.8, 17.9, 17.9, 15.8, 11.7, 8.9, 8.7, 8.7, 8.7, 8.7];
 
 %% Exchange rate: hard-tune with data for 2025Q3
 rngExog = qq(2025, 3);

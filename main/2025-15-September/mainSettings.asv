@@ -8,9 +8,9 @@ function opts = mainSettings
 
 opts.roundId        = "2025 Sept Forecast";
 opts.modelFile      = "minecofin";
-opts.mainDataFile   = "2025-24-09"; % name of data/Rwametric file 
-opts.addDataFile    = "2025-0-20"; % has CBO proj RIR-US and old GTM numbers
-opts.compRound      = "main/2025-03-March"; % comparison round
+opts.mainDataFile   = "2025-15-10"; % name of data/Rwametric file 
+opts.addDataFile    = "2025-09-15"; % has CBO proj RIR-US and old GTM numbers
+opts.compRound      = "main/2025-15-SeptBug"; % comparison round
 
 opts.resultsOutside = 0;
 
@@ -271,7 +271,7 @@ opts.reportModel.stdComp.range = qq(2006, 1) : qq(2023, 4);
 %% Historical filter options
 
 % Filtered range
-opts.filterHistory.range = qq(2006, 1) : qq(2025, 1); % default 2024Q2 if data; extend filter for shocktuning +2Q
+opts.filterHistory.range = qq(2006, 1) : qq(2025, 2); % default 2024Q2 if data; extend filter for shocktuning +2Q
 
 % Variables whose trend/gap decomposition is plotted; AK: can't add variables w/o changing reporting codes
 opts.filterHistory.trendGapVars = [
@@ -538,7 +538,7 @@ opts.histForecast.exogvars = [
 %% Forecast options
 
 % Horizon of forecast
-opts.forecast.range = qq(2025, 1) : qq(2029, 4); % extended forward each Q if new data
+opts.forecast.range = qq(2025, 3) : qq(2029, 4); % extended forward each Q if new data
  
 opts.forecast.scenarioNames = ...
     ["Baseline"];%, "Alternative"];
@@ -557,7 +557,7 @@ opts.forecastReport.plotRange = qq(2017, 1) : opts.forecast.range(end); % extend
 opts.forecastReport.highlightRange = opts.forecast.range; 
 
 % Range of the tables in the forecast report
-opts.forecastReport.tableRange = qq(2025, 1) : opts.forecast.range(end); % extend 2028Q4
+opts.forecastReport.tableRange = qq(2025, 3) : opts.forecast.range(end); % extend 2028Q4
 
 % Range for annualized series
 opts.forecastReport.tableRange_ann = yy(2021) : yy(2028);
