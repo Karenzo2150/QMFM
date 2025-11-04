@@ -934,6 +934,7 @@ dl_rp_enerstar_tnd = r_rp_enerstar_tnd * dl_rp_enerstar_tnd{-1} + (1 - r_rp_ener
   shock_dl_cons_tnd
   shock_dl_cpi_ener
   shock_dl_cpi_core
+  shock_l_inv_gap
 !do
   !transition_variables
     aux_?

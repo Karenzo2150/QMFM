@@ -26,11 +26,9 @@ dbObs.tune_d4l_y (rngTune) = 100 * log(1 + 7.7/100); % Nowcast Sept'25
 %% CPI option to soft/hard-tune CPIs Near-Term based on NBR-forecast/judgement, expected shocks
 % CPI tuning can also be information on developments of obs Mo CPI
 % populated in Rwametric database 
-% here we opt to tune headline CPI and 2 components
-% CPI_core can be soft-tuned to match any NBR or prel. CPI forecast for later Q--not used now
-% rngTune = qq(2025, 4) : qq(2025, 4);
-% dbObs.tune_shock_dl_cpi_core(rngTune) = 0;
-% 
+% here we opt to tune headline CPI and 2 components or alternatively tune 3
+% componets to derive the headline
+ 
 % CPI_core hard-tune 2025Q4 based on NBR forecast/judgment (NB these are s.a. see readData)
 % rngTune = qq(2025, 4);
 % dbObs.tune_dl_cpi_core(rngTune) = [....] or 100 * log(1+0/100);
@@ -78,7 +76,15 @@ rngTune = qq(2025, 3) : qq(2025, 3);
 dbObs.tune_grev_y(rngTune) = 18.5;
 
 %% deficit GFS1986 tuned for 2025Q3: 10.0% for 2025/26, semI 14.1%, semII 5.9%
-rngTune = qq(2025, 3) : qq(2025, 4);
-dbObs.tune_def_y(rngTune) = [14.2, 14.0];
+% rngTune = qq(2025, 3) : qq(2025, 4);
+% dbObs.tune_def_y(rngTune) = [14.2, 14.0];
+
+%% % soft-tune private investment shock, to reflect Bugesera (gov netLending,oexp) sum 5.2% GDP 2025/26-2027/28
+% Additonal to Qatar equity investiment 
+% effect spread over 12Q, markup 1/(investment/GDP)=1/0.15=6,take about half
+% to tune the inv_gap shock for extended filter , need to shock_l_inv_gap
+% in model 
+rngTune = qq(2025, 3);
+dbObs.tune_shock_l_inv_gap(rngTune) = 8.9;
 
 end

@@ -76,7 +76,15 @@ rngTune = qq(2025, 3) : qq(2025, 3);
 dbObs.tune_grev_y(rngTune) = 18.5;
 
 %% deficit GFS1986 tuned for 2025Q3: 10.0% for 2025/26, semI 14.1%, semII 5.9%
-rngTune = qq(2025, 3) : qq(2025, 4);
-dbObs.tune_def_y(rngTune) = [14.2, 14.0];
+% rngTune = qq(2025, 3) : qq(2025, 4);
+% dbObs.tune_def_y(rngTune) = [14.2, 14.0];
+
+%% % soft-tune private investment shock, to reflect Bugesera (gov netLending,oexp) sum 5.2% GDP 2025/26-2027/28
+% Additonal to Qatar equity investiment 
+% effect spread over 12Q, markup 1/(investment/GDP)=1/0.15=6,take about half
+% to tune the inv_gap shock for extended filter , need to shock_l_inv_gap
+% in model section of shocks for expert judgement
+rngTune = qq(2025, 3);
+dbObs.tune_shock_l_inv_gap(rngTune) = 8.9;
 
 end
