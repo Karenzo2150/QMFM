@@ -178,7 +178,7 @@ tunes.l_s(rngExog) = dbObs.obs_l_s(rngExog); %dbObs.obs_l_s(rngExog);
 % tunes.l_s(rngExog) = 100*(log(1372.7) + log(1 + 0.083)); % if level is tuned,eg we add  
 %  annualized assumed depr.rate from last observed ER, the remaining ER
 %  depr count to 0.5% (actual oct vs. prog target) for 2025 and is tuned for Q4
-tunes.dl_s(rngExog) = 100 * log(1 + 0.00005 * 4); %equivalent! tune dl_s (annualized!) 
+tunes.dl_s(rngExog) = 100 * log(1 + 0.005 * 4); %equivalent! tune dl_s (annualized!) 
 % we had to add tune_dl_s to minecofin.model
 
 %% Fiscal variables (follows FY), esp. deficit (GFS1986), govt demand G&S, revenue (so: other expend implicit)
