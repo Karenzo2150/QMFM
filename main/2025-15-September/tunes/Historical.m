@@ -30,12 +30,12 @@ dbObs.tune_d4l_y (rngTune) = 100 * log(1 + 7.7/100); % Nowcast Sept'25
 % componets to derive the headline
  
 % CPI_core hard-tune 2025Q4 based on NBR forecast/judgment (NB these are s.a. see readData)
-rngTune = qq(2025, 3);
-dbObs.tune_dl_cpi_core(rngTune) = [10.923]; % or 100 * log(1+0/100);
+% rngTune = qq(2025, 3);
+% dbObs.tune_dl_cpi_core(rngTune) = [10.923]; % or 100 * log(1+0/100);
 
-% CPI_food hard-tune with 2025Q4 NBR forecast or judgment
-rngTune = qq(2025, 3): qq(2025, 3);
-dbObs.tune_dl_cpi_food(rngTune) = [-13.823];
+% % CPI_food hard-tune with 2025Q4 NBR forecast or judgment
+% rngTune = qq(2025, 3): qq(2025, 3);
+% dbObs.tune_dl_cpi_food(rngTune) = [-13.823];
  
 % CPI_ener could soft-tune 2025Q4 for pump price effect of any excise tax change--not used now
 % (NB 0.2 is share fuels in energy) 
@@ -43,8 +43,8 @@ dbObs.tune_dl_cpi_food(rngTune) = [-13.823];
 % dbObs.tune_shock_dl_cpi_ener(rngTune) = 0;
 
 % CPI_energy hard-tune with 2025Q4 NBR forecast or judgment
-rngTune= qq(2025, 3): qq(2025, 3);
-dbObs.tune_dl_cpi_ener(rngTune) = [13.411];
+% rngTune= qq(2025, 3): qq(2025, 3);
+% dbObs.tune_dl_cpi_ener(rngTune) = [13.411];
  
 % CPI headline could be hard-tuned with 2025Q4 forecast or judgment
 % we can only tune 3 of 4 CPIs (NB these are s.a.,see readData)
@@ -57,13 +57,13 @@ dbObs.tune_dl_cpi_ener(rngTune) = [13.411];
 % rngTune = qq(2025, 4); %for Historical, one wouldn't tune to set equal to data!
 % dbObs.tune_l_s(rngTune) = dbObs.obs_l_s; % tune dl_s, added in model tune_ declaration
 
-rngTune = qq(2025, 3) : qq(2025, 3); % tune to guessed number
-dbObs.tune_l_s(rngTune) = [727.57];
+% rngTune = qq(2025, 3) : qq(2025, 3); % tune to guessed number
+% dbObs.tune_l_s(rngTune) = [727.57];
 
 % interest IB rate hard-tune for extended filter thru 2025Q3-4 if also tuned in BL
 % (e.g. no change CBR, so IB 0.3% above CBR=6.75% 2025Aug)
-rngTune = qq(2025, 3) : qq(2025, 3);
-dbObs.obs_i(rngTune) = [6.0026];
+% rngTune = qq(2025, 3) : qq(2025, 3);
+% dbObs.obs_i(rngTune) = [6.0026];
 
 %% fiscal (PCI deficit, govt revenue) hardtuned for extended filter thru 2025Q3 using May'25 PCI 
 
