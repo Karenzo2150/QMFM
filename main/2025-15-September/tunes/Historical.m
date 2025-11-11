@@ -85,6 +85,6 @@ dbObs.tune_def_y(rngTune) = [14.2];
 % to tune the inv_gap shock for extended filter , need to shock_l_inv_gap
 % in model section of shocks for expert judgement
 rngTune = qq(2025, 3);
-dbObs.tune_shock_l_inv_gap(rngTune) = [8.9];
+dbObs.tune_shock_l_inv_gap(rngTune) = [4.9];
 
 end

@@ -154,9 +154,9 @@ tunes.d4l_y(rngExog) = 100 * log(1 + 7.7/100); % tune with nowcast of Sept 2025 
 % soft-tune other-than-cons FD shocks, 'read' from filter results w.historical tuning of GDP (Nowcast)
 % filter distributes shocks among other FD, so that movement in GDP not only attributed to cons shock
 % rngExog = qq(2025, 3) : qq(2025, 3);
-tunes.shock_l_inv_gap(rngExog) =  8.8438; % Need to be read from ext.filter results
-tunes.shock_l_exp_gap(rngExog) = -4.5156; 
-tunes.shock_l_imp_gap(rngExog) = 0.066895; 
+tunes.shock_l_inv_gap(rngExog) =  4.9219; % Need to be read from ext.filter results
+tunes.shock_l_exp_gap(rngExog) = -4.0469; 
+tunes.shock_l_imp_gap(rngExog) = 0.061035; 
 
 % soft-tune private investment shock, to reflect Bugesera (gov netLending,oexp) sum 5.2% GDP 2025/26-2027/28
 % Additonal to Qatar equity investiment 
@@ -176,7 +176,8 @@ tunes.l_s(rngExog) = dbObs.obs_l_s(rngExog); %dbObs.obs_l_s(rngExog);
 % pln = exogenize(pln,  rngExog, 'dl_s');
 % pln = endogenize(pln, rngExog, 'shock_l_s');
 % tunes.l_s(rngExog) = 100*(log(1372.7) + log(1 + 0.083)); % if level is tuned,eg we add  
-%  annualized assumed depr.rate from last observed ER
+%  annualized assumed depr.rate from last observed ER, the remaining ER
+%  depr count to 0.5% (actual oct vs. prog target) for 2025 and is tuned for Q4
 tunes.dl_s(rngExog) = 100 * log(1 + 0.00005 * 4); %equivalent! tune dl_s (annualized!) 
 % we had to add tune_dl_s to minecofin.model
 
