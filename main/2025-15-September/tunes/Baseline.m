@@ -137,11 +137,12 @@ rngExog = qq(2025, 3);
 pln = exogenize(pln,  rngExog, 'i');
 pln = endogenize(pln, rngExog, 'shock_i');
 tunes.i(rngExog) = dbObs.obs_i(rngExog);
+
 %
 rngExog = qq(2025, 4);
 pln = exogenize(pln,  rngExog, 'i');
 pln = endogenize(pln, rngExog, 'shock_i');
-tunes.i(rngExog) = 100 * log(1 + (6.75+0.3)/100);
+tunes.i(rngExog) = 100 * log(1 + (6.75 + 0.3)/100);
 
 %% GDP & demand: recall we run ext.filter 1-2 Q beyond data (2025Q3-4) with hist tunes y-on-y GDP growth fr Nowcast
 % we 'read' demand shocks for Q3-4, then set back filter-range to end datarange; soft-tune demand shocks 1-2Q ahead
@@ -153,15 +154,15 @@ tunes.d4l_y(rngExog) = 100 * log(1 + 7.7/100); % tune with nowcast of Sept 2025 
 % soft-tune other-than-cons FD shocks, 'read' from filter results w.historical tuning of GDP (Nowcast)
 % filter distributes shocks among other FD, so that movement in GDP not only attributed to cons shock
 % rngExog = qq(2025, 3) : qq(2025, 3);
-tunes.shock_l_inv_gap(rngExog) =  8.9; % Need to be read from ext.filter results
-tunes.shock_l_exp_gap(rngExog) = -0.8431; 
-tunes.shock_l_imp_gap(rngExog) =  0.011437; 
+tunes.shock_l_inv_gap(rngExog) =  8.8438; % Need to be read from ext.filter results
+tunes.shock_l_exp_gap(rngExog) = -4.5156; 
+tunes.shock_l_imp_gap(rngExog) = 0.066895; 
 
 % soft-tune private investment shock, to reflect Bugesera (gov netLending,oexp) sum 5.2% GDP 2025/26-2027/28
 % Additonal to Qatar equity investiment 
 % but effect spread over 12Q, markup 1/(investment/GDP)=1/0.15=6,take about half
 rngExog = qq(2025, 3) : qq(2028, 2);
-tunes.shock_l_inv_gap(rngExog) = [8.9, 11.7, 15.8, 17.9, 17.9, 15.8, 11.7, 8.9, 8.7, 8.7, 8.7, 8.7];
+tunes.shock_l_inv_gap(rngExog) = [4.9, 5.9, 7.9, 8.9, 8.9, 7.9, 5.9, 4.5, 4.4, 4.4, 4.4, 4.4];
 
 %% Exchange rate: hard-tune with data for 2025Q3
 rngExog = qq(2025, 3);
@@ -171,12 +172,12 @@ tunes.l_s(rngExog) = dbObs.obs_l_s(rngExog); %dbObs.obs_l_s(rngExog);
 
 % hard-tune ER (l_s) or QoQ growth (dl_s) for 2025Q4 using NBR=IMF program (8.3% eop2025, May'25Review)
 % or extrapolate path realized 2025Q1-3, ie 5.2% at end-Q3 over 2024Q4 (1372.7), so 2.9% remains for 2025Q4;
-rngExog = qq(2025, 4);
-pln = exogenize(pln,  rngExog, 'dl_s');
-pln = endogenize(pln, rngExog, 'shock_l_s');
+% rngExog = qq(2025, 4);
+% pln = exogenize(pln,  rngExog, 'dl_s');
+% pln = endogenize(pln, rngExog, 'shock_l_s');
 % tunes.l_s(rngExog) = 100*(log(1372.7) + log(1 + 0.083)); % if level is tuned,eg we add  
 %  annualized assumed depr.rate from last observed ER
-tunes.dl_s(rngExog) = 100 * log(1 + 0.029*4); %equivalent! tune dl_s (annualized!) 
+tunes.dl_s(rngExog) = 100 * log(1 + 0.00005 * 4); %equivalent! tune dl_s (annualized!) 
 % we had to add tune_dl_s to minecofin.model
 
 %% Fiscal variables (follows FY), esp. deficit (GFS1986), govt demand G&S, revenue (so: other expend implicit)

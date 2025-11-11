@@ -918,7 +918,7 @@ dl_rp_enerstar_tnd = r_rp_enerstar_tnd * dl_rp_enerstar_tnd{-1} + (1 - r_rp_ener
   l_y_agr_gap
   l_z_gap
   l_y, d4l_y
-  dl_s
+  dl_s, l_s
   l_cpi_core
 !do
   !measurement_variables

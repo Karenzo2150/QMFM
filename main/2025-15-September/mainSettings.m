@@ -10,7 +10,7 @@ opts.roundId        = "2025 Sept Forecast";
 opts.modelFile      = "minecofin";
 opts.mainDataFile   = "2025-15-10"; % name of data/Rwametric file 
 opts.addDataFile    = "2025-09-15"; % has CBO proj RIR-US and old GTM numbers
-opts.compRound      = "main/2025-15-SeptBug"; % comparison round
+opts.compRound      = "main/2025-03-MarchAK"; % comparison round
 
 opts.resultsOutside = 0;
 
@@ -20,7 +20,7 @@ opts.resultsOutside = 0;
 % opts.parameterLegends = "Original";
 
 opts.parameterNames   = ["setparam"];%, "setparamOrig"];
-opts.parameterLegends = ["Nov'24 recalibrated"];%, "Sept'24 Original"];
+opts.parameterLegends = ["Nov'24 recalibrated"]; %, "Sept'24 Original"];
 
 %% Actions to run
 
