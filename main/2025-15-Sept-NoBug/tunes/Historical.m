@@ -77,7 +77,7 @@ dbObs.tune_grev_y(rngTune) = [17.0];
 
 %% deficit GFS1986 tuned for 2025Q3: 10.0% for 2025/26, semI 14.1%, semII 5.9%
 rngTune = qq(2025, 3) : qq(2025, 3);
-dbObs.tune_def_y(rngTune) = [14.2];
+dbObs.tune_def_y(rngTune) = [8.5];
 
 %% % soft-tune private investment shock, to reflect Bugesera (gov netLending,oexp) sum 5.2% GDP 2025/26-2027/28
 % Additonal to Qatar equity investiment 

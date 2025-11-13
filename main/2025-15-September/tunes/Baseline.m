@@ -155,8 +155,8 @@ tunes.d4l_y(rngExog) = 100 * log(1 + 7.7/100); % tune with nowcast of Sept 2025 
 % filter distributes shocks among other FD, so that movement in GDP not only attributed to cons shock
 % rngExog = qq(2025, 3) : qq(2025, 3);
 tunes.shock_l_inv_gap(rngExog) =  4.9; % Need to be read from ext.filter results
-tunes.shock_l_exp_gap(rngExog) =  -4.3832; 
-tunes.shock_l_imp_gap(rngExog) =  0.054598; 
+tunes.shock_l_exp_gap(rngExog) =  -0.042061; 
+tunes.shock_l_imp_gap(rngExog) =  0.00076753; 
 
 % soft-tune private investment shock, to reflect Bugesera (gov netLending,oexp) sum 5.2% GDP 2025/26-2027/28
 % Additonal to Qatar equity investiment 
