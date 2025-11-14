@@ -541,7 +541,7 @@ opts.histForecast.exogvars = [
 opts.forecast.range = qq(2025, 3) : qq(2029, 4); % extended forward each Q if new data
  
 opts.forecast.scenarioNames = ...
-    ["Baseline","Alternative"];
+    ["Baseline"];%,"Alternative"];
 
 opts.forecast.scenarioLegends = []; % scenarioNames will be used if this is empty
 

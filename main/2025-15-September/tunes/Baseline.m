@@ -162,7 +162,7 @@ tunes.shock_l_imp_gap(rngExog) =  0.00076753;
 % Additonal to Qatar equity investiment 
 % but effect spread over 12Q, markup 1/(investment/GDP)=1/0.15=6,take about half
 rngExog = qq(2025, 3) : qq(2028, 2);
-tunes.shock_l_inv_gap(rngExog) = [4.9, 5.9, 7.9, 8.9, 8.9, 7.9, 5.9, 4.5, 4.4, 4.4, 4.4, 4.4];
+tunes.shock_l_inv_gap(rngExog) = [4.5, 5.9, 7.9, 8.9, 8.9, 7.9, 5.9, 4.5, 4.4, 4.4, 4.4, 4.4];
 
 %% Exchange rate: hard-tune with data for 2025Q3
 rngExog = qq(2025, 3);
