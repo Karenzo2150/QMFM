@@ -9,13 +9,13 @@ clear, clc, close all
 
 opts = mainSettings();
 
-% whatToPlot = "filter";
-% plotRange = opts.filterHistory.rangePlot;
-% HighRange = opts.reportHistory.highlightRange;
+whatToPlot = "filter";
+plotRange = opts.filterHistory.rangePlot;
+HighRange = opts.reportHistory.highlightRange;
 
-whatToPlot = "forecast";
-plotRange = opts.forecastReport.plotRange;
-HighRange = opts.forecast.range; 
+% whatToPlot = "forecast";
+% plotRange = opts.forecastReport.plotRange;
+% HighRange = opts.forecast.range; 
 
 %===========================================================================================================================================================================================
 %% Setup data
@@ -44,10 +44,10 @@ switch whatToPlot
     dbDecomp = tmp.dbEqDecomp;
 
     % plot main indicators for forecast rounds comparison
-    % tmp = codes.utils.loadResult(opts, "forecastCompare");
-    % forecComp = tmp.dbCompFcast;
-    % optsCurr  = mainSettings();
-    % tmp = codes.utils.loadResult(optsCurr, "forecast");
+    tmp = codes.utils.loadResult(opts, "forecastCompare");
+    forecComp = tmp.dbCompFcast;
+    optsCurr  = mainSettings();
+    tmp = codes.utils.loadResult(optsCurr, "forecast");
 end
 %=========================================================================================================================================================================
 %% For forecast charts
@@ -298,9 +298,9 @@ codes.utils.saveEmf(opts, gcf, fileName);
 % RER equals nom ER + diff between foreign inflation and dom. core inflation
 
 figure("visible", "on");
-plot(plotRange, db.l_z, 'linewidth', 2); %match color with next chart
+plot(plotRange, db.d4l_z, 'linewidth', 2); %match color with next chart
 hold on
-plot(plotRange, db.l_z_tnd, 'linewidth', 2);
+plot(plotRange, db.d4l_z_tnd, 'linewidth', 2);
 zeroline;
 grid on
 highlight(HighRange); %,'EdgeColor','m','LineWidth',1.5);
@@ -440,13 +440,14 @@ title('Policy Rate (IB Rate), %', 'FontSize',12,...
 fileName = "IB_core_RIR";
 codes.utils.saveEmf(opts, gcf, fileName);
 figure("visible", "off");
-%%
+%% Real interest rate components
 RIR_compon = [db.i,...
   - db.e_dl_cpi_core{+1}];
 barcon(plotRange,RIR_compon,'colormap', parula)
 hold on
 grid on
-plot(plotRange, db.r, 'linewidth', 3, 'color', 'w');
+
+%plot(plotRange, db.r, 'linewidth', 3, 'color', 'w');
 plot(plotRange, db.r, 'linewidth', 1, 'color', 'k');
 legend ('ER, Nominal', 'CPI, Core+', 'interpreter','none',...
   'location', 'southoutside','orientation', 'horizontal', 'fontsize', 12);
@@ -488,7 +489,7 @@ highlight(HighRange);
 legend ('Level','Trend',...
     'location', 'southoutside','orientation', 'horizontal','interpreter', 'none');
 grid on
-title('Real Interest Rate, %', 'FontSize', 12);
+title('Real Interest Rate (IB), %', 'FontSize', 12);
 fileName = "real_int_ratesF";
 codes.utils.saveEmf(opts, gcf, fileName);
 
@@ -887,7 +888,7 @@ grid on
 %%
 %Forecast comparison
 %Main indicators
-optsCurr.compRound = '2023 Nov Forecast';
+optsCurr.compRound = '2025 March Forecast';
 figure("visible", "on", 'Units', 'normalized', 'Position', [0.1, 0.1, 0.8, 0.8]);
 
 subplot(3,3,1);
@@ -902,7 +903,7 @@ grid on
 hold on
 subplot(3,3,2);
 plot(plotRange, forecComp.d4l_y, 'linewidth', 2);
-title ('Headline CPI, YY %','interpreter', 'none','FontSize',10);
+title ('Real GDP, YY %','interpreter', 'none','FontSize',10);
 highlight(HighRange);
 grid on
 
