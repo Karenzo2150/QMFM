@@ -1,0 +1,22 @@
+QMFM revised draft "Learning" report WS4 and stocktaking on agenda: tom Friday, Aug 18, 3d floor
+
+
+--read and revise WS4 
+--Revise the baseline tuning file ( get rid of comments) using the updated WS4 learning report
+--update Forecast presentation and QMF Outlook
+--re-run and compare rounds (May vs July) 
+-examine the outcome from the tuning of Q1 and Q2 fiscal variables  before we get realization data 
+     ---19 gdem % GDP is tuned higher as the assumption of catch-up after a dip in 2022Q4 and 2023Q1
+
+---Tuning baseline --baseline is exercise/experimented with 19 in gdem 
+                            ---Basleine1 uses 25 % gdem 
+                    --cleaning need and put a reasonable label for these tuning in a one baseline
+
+---nginv and other fiscal variables tuning 2023 Q1 ---used preliminary data for Q1 to compute fiscal deficit 
+                                                                                   ---tuned prel data for investment  from budget to come up with Govt dem and for 23 Q1 
+---NA investiment has a big discrepancy in Q1 23 and other expenditure is negative for that reason 
+
+---grab some reasonable debt figures/tunes in 2023 Q1 (Domestic debt and external debt stock)--prel figures tuned in the database (new version) to report auxiliary variables forecast ( as basis or ICs for 22 Q4?)
+
+---Full WS4 outlook and then extract ppt
+              --outline of full Outlook and ppt to be sent by ak by next week

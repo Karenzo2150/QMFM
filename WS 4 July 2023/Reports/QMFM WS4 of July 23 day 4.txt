@@ -1,0 +1,131 @@
+QMFM WS4 of July 23/ day 4
+
+1.Debt
+         
+    ---overall debt (BG & Private debt) and the CG Debt 
+
+          -----can we model the debt correctly and capture the full coverage of CG debt
+        ---the current model deficit is determined by CG debt 
+
+2. Tylor rule is based on log-transformed int rates 
+
+3. dbObsTrans for hist and fcast charts and for tuning 
+
+4. ICs/tunes/  NTF forecast
+
+--nowcasting in historical tunes 
+
+       ---Historical tuning (before we read data) of fiscal data( i.e. BER July-DEC & July-March BER) 
+              ----Debt, grant and exp and grev and deficit var tuned
+
+         ---filtration range : 2023 Q1 ( Fiscal vars missing for Q1)
+       ---forecast range ( 2023 Q1-2026)
+     -----Prices ( no NTF for Q2) ---Sources :  ARIMA nowcast? using d4l cpi & cpi food
+---- MPC  should be appropriately used for correct tuning of prices 
+
+interest rate tuned for Q2 as  average of apr & may in the observation ( as for Q3 maintained unchanged)
+
+       ----GDP is tuned by Q2 & Q3 nowcast historically, run the filter until 23 Q2 and obtain and distribute the shocks for GDP components (dbFilt.mean.shocks_i)
+         ---retun the forecat range to start from 23Q1 
+     
+5. historical tunes apply to measurement variables while baseline tunes applied to transitional vars and corresponding shocks 
+         ----measurement variables links model (transition) vars with Obs vars (data)
+       ---- for forecast you have the ICs and provide values for exog variables which are shocks
+                 ---you have ICs from filtration and NTF judgments (nowcasts and shocks) to be able to forecast the gaps and trends for the future range
+     ----Forecast tuning deficit Q2 we take def_y Q1 + diff btn ann.target and Q1 give Q2 = 15 (
+--discr revenue is just a deviation from trend 
+       ----gov rev discr is mainly made of PKO and unrelated to GDP so it follows the PKO trend not GDP
+
+6. Tuning /forecast finetuning --interpretation
+
+               ----consumption explains a larger part of GDP nowcast tuned variations----problem?
+                               ----examine and compare all GDP-related shocks ( filtered shocks and simulated)
+                               ---if you provide data for monetary, prices not GDP and fiscal the filtered estimates of yoy GDP growth is amplified bcz the corr. shocks are amplified (hugely positive)----without the GDP tune we would've got larger positive shocks 
+
+7. simulate plan in the forecast/baseline is based on anticipated expectations......which affect the Q2 period before the simulation tuned Qo
+                     ---if we tune some variables in Q3 ---allows/ imply for a larger shock in Q2 
+
+       ----- gov demand % GDP (gdem_y) is tuned is Q3 ( 25 %) ----for gov dem there exists gdem % gdp eq. in model and trend ---so the l_gdem decomp is an approximated formula of the decomposition which makes it less intuitive ( approximation error is huge---see forecast report)
+       ----the discr component is also away too low! then might imply the anomalies in gdem tuning 
+
+for the exhange rate : tuned using the UIP shock and we don't allow it to depreciate much----the endogenous dynamic effect of exchange rate is important 
+
+        -----if the expected inflation is positive, CB allows only for a smaller depreciation through adjusting the exch rate target (see e5 and e6) 
+       ----Overvaluation : more positive exchange rate gap :  Depreciation 
+     ---undervaluation : more negative exchange rate gap : Appreciation 
+        
+
+% recalibration of parameters is done after ICs (filtration) tunes are perfectly gives better/reasonable results
+
+
+============================================================================================================================
+
+9:44 AM 28/07/2023 ----DAY 
+
+   1.  readData: Aux variables settings re-arranged ( backward reconciliation btn debt stock and flows for consistent projections)
+     ----in Forecast/auxreport , the deficit is historically computed using debt and change in debt stock from fiscal file----rather than BUdget and DMO debt data
+                 ---add-hoc debt stock assumptions in read data ( see line 116-130 sets in intial ndebt_fcy in 2014,4 )
+                 ---historical backward figures are still inconsistency (before 2022 Q4)
+                 --- the ICs (initial values---22Q4
+
+2. Parametrization and recalibration of cyclical fiscal variables  (grev, oexp gdem) -----
+
+                  -----Gov revenue ----eq. LHS and RHS unobserved ----change in coeff
+                 ------ lower coeff. cyclical gov revenue, cyclical gdem and cyclical oexp
+                ----trend of gdem and deficit shifts (filtration report)
+              ----reaction of deficit to cyclical revenue shock increases (IRFs) ---reaction of output gap same
+             -----effects on gdem gap is increases (procyclical)----IRFs
+
+Forecast reporting (ICs, current/recent stance and forward looking)
+           ----- historical range (2023Q1)---foracst range (starts in 2023Q2)
+           ---current stance/ICs/ present (2023Q1)
+           ----tuning/nowcast 
+           ---- and present change in gaps and reasons behind movement ( i.e. say exchange rate is overvalued or undervalued 
+
+3. regular Qo forecast report---content/structure
+
+       --remove yoy chnages charts (smooth yearly)
+       --rather decomp charts 
+       -- history cant be described----remove past for Qo presentation 
+       --- forecast not based heavily on model equation/structure
+
+section title slides
+
+---data description and incoming data (measurement/observed variables in the model)-----inputs to filter
+--current stance/ICs ----interpretation of the incoming data ( view on state of economy)----Draw conclusion on new data
+                ----stance is not data is the gap----state of the BC
+                 ---i.e. exchange rate is new data but exchange rate is overvalued) 
+---forecast/gaps 
+            ---external forecast assumptions
+           ----forecast tunes/assumption (Fiscal (NTF and long term trends)
+         ---simultaneous presentation of the forecast body------all key macro indicators
+                               ----- verbal summary of the simultaneity btn key indicators (qoq gdp gap & components, qoq inflation, RER gap, fiscal impulse (gdem % gdp)
+                                ---- charts/tables for key indicators (yoy growth figures for key indicators)
+
+ end results/ summary of the forecast ( i.e. each indicator takes a slide) 
+                      
+---yoy summary of the path of indicators ( i.e. inflation will return to level in 2 years ahead)----part of the forecast summary
+          ---figures in tables accompanied by the narrative 
+         ---forecast story/explanation ----gaps and economic content of the model--
+                                 ---decomposition charts of the gap (emf)
+
+
+
+
+
+
+
+
+           
+
+
+
+
+
+
+
+
+
+
+
+     
