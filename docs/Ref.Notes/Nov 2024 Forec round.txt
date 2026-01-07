@@ -1,0 +1,31 @@
+Arend-remarks:
+
+let's try to finalize both WS6 report (I-III) and Sept/Nov round, while resolving remaining issues; this is what I identified as still outstanding:
+
+1--Phillips curve: the coefficient b3 of direct effect of foreign prices; we had 0.05 and ZR kept it at 0.05, although MC Bay.est. was 0.105
+in response to LK queries below, I would say that the IGC study suggests that the direct effect of foreign prices (b3) is likely low--thanks to low pass-through and substitution toward domestic goods (so confirming our choice)
+I would not read in the IGC study an implication for b2 (rmc) or b4 (share of output gap in rmc), but perhaps I misunderstood Kazana's email below
+note also that the IGC study does not cover the recent strong ER depreciation episode (Policy Paper is from March 2021, and their blog is somewhat misleading as it suggests it is recent...)
+we could repass this issue by Zoltan
+
+2--Taylor rule: the interest rate response to outputgap c3: we had 0.5 and ZR reduced it to 0.2 with the argument about the pure Taylor rule (see his email below and my response; still pending ZR's replique
+
+3--historical tuning outputgap: ZR says  the overtuning of the filter in calcHistForecast, I honestly have no idea what causes it; technically, the problem is that we have two historical tunes on l_y_gap; if we had only one (either one) the filter would work, and I have zero clue why it works with one tune but not with two 
+this remains outstanding, but note that ZR's latest Develop Nov Workshop historical tune files has both outputgap tunes commented, whereas we should keep at least the one that tunes the remaining Covid gap, no?
+ --> rngTune = qq(2022, 4);dbObs.tune_l_y_gap(rngTune) = -2;
+ 
+--ZR just sent us the "small example model and its driver, illustrating the "dynamic overtuning" issue of the output; did anyone understand this and how it would solve the overtuning issue? does it only affect calcHistForecast?
+
+4--perhaps other issues outstanding?
+
+==> this said I would suggest that we all run the Sept/Nov round as is, with the pars as ZR set in setparamNew, but with the remaining Covid outputgap tuning retained (ie uncommented)
+       and if you agree, we could discuss shortly online final WS6 report and Sept/Nov round's results and go over these issues, while deciding on which ones to seek ZR's view
+
+======================================================================================================================================================
+ Kazana (query):
+
+Thank you very much for the WP,
+ The paper is interesting. This is how I understand the implications of this WP vis-à-vis QMFM.
+ According to this paper, assuming that this behavior of firms facing exchange pass-through in the production but do not pass the cost to the final consumers continues, parameter value of b4 (0.8) looks plausible (the only way of adjusting b4 in line with the paper can be to revise it upward – based on the equation of dl_cpi_core, rmc is 0.16 of l_y_gap and 0.04 of l_z_gap). This also can be supported by the foreign-domestic substitution effect.
+ Alternatively, this effect can also be resolved in the core inflation through revising b2 downward which can lead to the effects of the exchange rate being very minimal because according to this study, importers are “shock absorbers” (price adjustments are stickier). The downside I saw in this is a reduction in the effect of l_y_gap. It is also controversial since the substitution effect can lead to some domestic demand pressure (for intermediate goods and affect prices indirectly in l_y_gap).
+ Let me know if this thinking is correct.

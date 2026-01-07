@@ -1,0 +1,40 @@
+
+Zoltan: Ans on Fiscal Block
+
+let me send below my reactions to the issues raised so far.
+First of all, I'm attaching updated codes, which should address all points except those related to readData_new.
+In particular, the new forecast report table with the auxiliary variables is included.
+I also removed setparam1/2/3, they were intended for experimentation only.
+The supplemtables code is updated as well.
+Also, the trend/gap decompositions are fine in both the historical and the forecast report. The trick is the use the addTrendsAndGaps function with correct inputs (line 266 of reportForecast). This basically means that when we're preparing the forecast report, the "observed" data is taken from the forecast database just as in Arend's version, but this solution works for both reports.
+The second decomposition of the deficit ratio is indeed a bit tricky, but can be solved without adding a new model variable, see lines 732-751 in addDecompositions (743 and 745 in particular). Basically, the seriesName variable does not actually have to refer to an existing model variable, it's more like the name of the decomposition; in 99% of the cases this is indeed the name of a model variable, but there are exceptions (the UIP decomposition in lines 403-423 is another one).
+There was a question about how to best save table data. The easiest way (and the only one which does not require substantial additional effort) is to collect the data in an IRIS database, and use the toCSV method. Anything else needs a bit of extra work.
+
+
+====================================================================================================================================================
+
+Arend: Qstn on Fiscal Block 
+
+sorry to flag two small things (as we're writing up the model, esp. new fiscal block, both also in light of IMF literature on this):
+
+1. fiscal impulse we correctly give equal weight to discretionary deficit and change in structural deficit, and zero weight to the cyclical components
+yet it seems we meant to put brackets around the discretionary components
+we also agreed, I think, that cyclical components do not belong in the impulse (as their effect is assumed 'automatic', in observed output gap):
+
+fisc_imp = sw1⟨1⟩ * gdem_y_discr + oexp_y_discr - grev_y_discr + sw2⟨0⟩ * oexp_y_cyc - sw3⟨0⟩ * grev_y_cyc  + def_y_str - def_y_str{-1}  (A)
+
+2. cyclical revenue equation we had set the coefficients by using elasticity of revenue/tax base vis-a-vis tax-base gap (or output gap) times revenue/GDP share  [see email exchange May 20-21, there is in essence no difference, I believe, between our two approaches]
+
+however, the neutral value for the elasticity is zero (not one, as I had wrongly assumed); the neutral value for the elasticity of tax revenue vis-a-vis 
+the taxbase is indeed one--as it appears in the literature on this--but for us, it is the elasticity of the ratio that matter and the default there is zero
+ 
+grev_y_cyc = v1⟨0.042⟩ * l_cons_gap + v2⟨0.021⟩ * l_imp_gap + v3⟨0.07⟩ * l_y_gap + shock_grev_y_cyc⟨σ=0⟩ (B)
+ 
+thus, the coefficients v1-v3 seems much to high, they should be of the order 0.2 times revenue/GDP share
+ 
+similarly, for the cyclical of other expenditure [and gdemand], the neutral value is zero, so if there is countercyclical policy
+it could be of the order of 0.2 ([0.05] times spending/GDP share, a lot lower than what we had assumed in (B)
+ 
+adjusting this would get rid of the seeming large role of cyclical components in the historical decomposition, which we know to be very small in Rwanda
+ 
+we have written up the justification of our fiscal equations using literature on cyclically adjusted deficit etc.--we can share fyc

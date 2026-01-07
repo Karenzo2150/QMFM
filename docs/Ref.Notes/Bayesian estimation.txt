@@ -1,0 +1,34 @@
+Zoltan remarks:
+
+output gap parameter in the policy rule should actually be 0, since the forward looking inflation term captures its original role as a proxy for inflation expectations (the great Hungarian mathematician Paul Erdős wrote his letters in such a cut-to-the-chase style ... :))
+
+But really, I think any value other than 0 is either a misunderstanding of the original Taylor rule (with contemporaneous inflation and output gap proxying for inflationary pressures), or an improper representation of a very dovish monetary policy, which would never fight inflation when the economy is in recession, in which case it wouldn't have to anyway, since the recession automatically will bring inflation back to target (not to mention that the output gap term will lead to excessively hawkish reaction when the economy is booming). If dovish policy is the reason to have the output gap in the policy rule, than a much simpler and more consistent solution is to simply lower the reaction parameter, which is already very low for us at 1.2.
+
+Regarding the training materials, the only files from the first batch that I would keep are 3 (covering real marginal cost in an open economy), and maybe 5 (though the most important parts are extended in the 3/3A of the second batch); all the others are either useless (2), or have better versions in the second batch. And I would ignore the money block presentation from the second batch (4), since we have an interest rate rule in the model.
+
+The order I suggest is this:
+1 of the second batch
+3 of the first batch
+2 of the second batch
+5 of the first batch
+3 and 3A of the second batch
+The more theoretical materials on Bayesian estimation and the Kalman-filter are only for those really interested. And of course you should keep the user manual under your pillow :)
+
+I've also just realized that I forgot to send to you the small example model and its driver, illustrating the "dynamic overtuning" issue of the output, so I'm attaching them now.
+
+================================================================================================================================================
+Query:
+
+you reminded us of the the 0 coefficient of outputgap in the 'pure' Taylor rule, but then so many CBs and models use a trade-off between inflation deviation and outputgap (even expressed mathematically as 'preference'), are they then all both unpure and wrong ?
+
+Extensive work on clarifying the code files and resolving the issues, much helpful & appreciated
+
+on the optimal use of training materials, we have tried to organize all materials (handouts, videos, readings etc.) since April-June 2021, 
+in three sets: I. April-June 2021 online (with 7 handouts)
+                      II. WS-1-5 Oct 2022-Dec 2023 (7 handouts)    (and III.  WS6 Sept-Dec 2024)
+
+I attach the sets I and II with all handouts. 
+As there is some overlap (because of time lapse June 2021 - Oct 2022), your suggestion for an 'optimal combined set' is most appreciated
+
+one QMFM question on latest parameter set: what was the reason for reducing coefficient c3 for outputgap n Taylor rule from 0.5 to 0.2 ?
+(NB NBR/IMF (2020) had 0.2, but the larger value seemed more in line with other FPAS models)

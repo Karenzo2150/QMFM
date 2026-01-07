@@ -1,0 +1,45 @@
+Zoltan remarks:
+I see now that I didn't read your previous mail carefully, as I thought you have found an alternative source for the RIR trend, while this is clearly not the case, since the CBO only provides RIR. This is a problem because I don't think HP is a reliable method in this case (it should always be the last resort anyway); at the very least please try other smoothing parameters than the default values, the l = 1600 might give too volatile results, especially during/after covid
+Also, don't forget that ideally the parameters of the rstar_tnd equation should be re-calibrated, especially the std of the shock; though probably it wouldn't change a lot, so it's not very urgent
+Regarding the IRIS warning about X13, please first identify which series causes the issue, and whether that series should be adjusted at all, or it's not too short etc.
+As for the puzzling behavior after 2028Q4, I can't say much without replicating the problem on my PC, so please send me the round codes (please pay attention, I will be harsh this time, and will not move a finger if the file size is larger than 2MB ... :))
+
+Query:
+
+on the source for foreign RIR Trend
+--no pb for GPM, you had already explained, and MINECOFIN needs of course to find its own sustained solution
+--your explanations on the choice of RIR are clear; we seem to have choice between FFR and 3 month Tbill rate, but as WEO-GAS (used in intMF) projects the latter, we opt for it
+--so with your view that CBO is a good source, we decided to go with the 3mos Tbill rate  (see "free" source files attached, just in case)
+--we put the CBO nominal interest rate and PCE (data and forecast) into addData..... (also attached), and read the new rstar_US_cbo and calculate an HPF trend in readData
+--whereas the one-year old GPM rstar_tnd was forecast at -0.5% going to around 0% during 2024Q1-2026Q4, the new calculated CBO rstar_tnd goes from 2.9 to 0.9bover that period
+--overall, not much effect on forecast results, though the interest rate is pulled up to a higher neutral rate, as expected (and more realistic it seems)
+
+--of course, we have now a more explicit "discrepancy" (that was always there): the rstar_tnd exog.projection is based on CBO projections for US interest rate and US inflation, whereas the model uses WEOGAS projection for US interest rate and WEOGEE cpi_star of Rwanda's trading partners expressed in US$
+
+========================================================================================================================================================
+Zoltan remarks:
+
+Unfortunately, I have to disappoint you regarding the GPM forecast, I lost access to the model and the data when I left OGR
+As for the definition of RIR in the US block in GPM, I'm not sure about the tenor of the nominal rate, but in other OGR models they usually take the shortest available, which I think would be the FFR in this case, though there may be a forward averaging, similarly to what we we do in the QMFM to get r4, so the 3M Tbill rate is a sensible choice
+On the other hand, I'm quite sure that the "deflator" is dPCE{+1}, so the CBO series should be OK
+In any case, any significant difference can be captured within the premium, so that the resulting neutral rate for RWA would be virtually unchanged
+As for the BRB project, it is well on it's way, I was asked to be prepared for two more missions this year, so I'll be around if you need me urgently in person :)
+
+Query:
+
+we are managing to engage BNR on macro projections for IMF review with our new March 2024 round
+
+one issue --affecting neutral BNR's interest rate--is the US RIR trend, where we only have one-year old rstar_tnd from GPM (early 2023)
+it's clearly outdated as it projects RIR stagnant at around zero, while US RIR moved from +0% to +2% during 2021-24 and may settle at 1% 
+
+we are still exploring other ways (via IMF, online, sunscription..) but no result yet.....
+
+could you please help us out once more with an updated GPM  series for the addData_... file?
+   on that rstar_tnd, do you know how it is defined: X-mos US Treasuries -/- CPI or PCE {+1} ?   (PCE personal cons. expenditure price index)
+
+we found an alternative in US Central Budget Office latest published Budget and Economic Outlook 2024 to 2034 (attd), from which we calculate:
+CBO projected RIR real interest rate (3-mos US Treasury bills rate -/- PCE{+1} projected to drop from 3% early 2024 to 1% early 2026
+=====================================================================================================================================================
+
+
+

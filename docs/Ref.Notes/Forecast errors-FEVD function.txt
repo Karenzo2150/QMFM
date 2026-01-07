@@ -1,0 +1,40 @@
+
+Forecast errors-FEVD function
+=====================================================================================================================
+
+The function which calculated the forecast uncertainty for linear models is fevd. Here's how you should use it.
+Suppose you want to see the two-year-ahead confidence interval for year-on-year headline inflation, in other words, d4l_cpi.
+Assuming the you have the model object m in your workspace, you first have to type
+
+[~,~,~,x] = fevd(m, 8);
+The will return a database x with the contribution of each shock to the forecast uncertainty of each model variable. Since we are interested in y-o-y headline CPI, we can select
+
+x = x.d4l_cpi{:,:,1};
+And since we're after the overall confidence interval, so we have to sum the contributions, which we do by
+
+x = sum(x, 2)
+This returns the variance of forecast error; but for the confidence interval we need the standard deviation:
+
+x = sqrt(x)
+With the current parametrization, you should see something like
+
+    Series Object: 8-by-1
+    Class of Data: double
+
+             1   
+          _______
+
+    1:    0.81409
+    2:     1.6259
+    3:     2.5151
+    4:     3.4579
+    5:     4.0732
+    6:      4.511
+    7:     4.8153
+    8:     5.0196
+
+
+    "Dates"    ""
+
+    User Data: Empty
+That means that the width of the two-year-ahead confidence interval is close to 5.02%
