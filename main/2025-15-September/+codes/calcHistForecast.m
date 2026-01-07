@@ -144,7 +144,7 @@ for n = 1:paramNum
     % Run the forecast
     tmp = simulate(m(n), dbInit, forecastRange, 'Plan', pln);
     tmp = dboverlay(dbInit, tmp); 
-    dbFcast(t, n) = dbclip(tmp, forecastRange(1)-1 : forecastRange(end)); %#ok<AGROW>
+    dbHistFcast(t, n) = dbclip(tmp, forecastRange(1)-1 : forecastRange(end)); %#ok<AGROW>
     
   end
   
@@ -153,5 +153,5 @@ end
 % Save results
 
 codes.utils.writeMessage(mfilename + ": saving results ...");
-codes.utils.saveResult(opts, "histForecast", "dbFcast")
+codes.utils.saveResult(opts, "histForecast", "dbHistFcast")
 codes.utils.writeMessage(mfilename + ": done.");

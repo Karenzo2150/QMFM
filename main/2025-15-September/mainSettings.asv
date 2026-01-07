@@ -48,7 +48,7 @@ opts.reportHistory.shocks.run         = 1;
 
 opts.calcHistForecast.run             = 0;
 
-opts.reportHistForecast.run           = 0;
+opts.run           = 0;
 
 opts.calcForecast.run                 = 1;
 
@@ -455,7 +455,7 @@ opts.filterHistory.shockDecompGroups.Rest = "Init/determ.";
 %% Historical forecast options
 
 % Range of historical forecast
-opts.histForecast.range = qq(2022, 4) : qq(2023, 2);
+opts.histForecast.range = qq(2016, 1) : qq(2023, 2);
 
 % Horizon of historical forecast
 opts.histForecast.horizon = 8;
@@ -496,6 +496,7 @@ opts.histForecast.variables = [
   "d4l_cpi_tar"
   "prem"
   "e_dl_z_tnd"
+  "d4l_y"
   ];
 
 % Observed exogenous variables

@@ -267,7 +267,7 @@ p.std_shock_dl_rp_enerstar_tnd  = 2.5;6;
 % --------------------------------------------
 % -------- Auxiliary model parameters --------
 
-p.ss_debt_fcy_rat   =  55/65;
+p.ss_debt_fcy_rat   = 0.8462; % 55/65;
 % p.ss_prem_debt_fcy  = -0.5; % discount vis-a-vis ss_istar
 % p.ss_prem_debt_lcy  =  2.8; % premium above i policy trend
 
