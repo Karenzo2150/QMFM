@@ -1,4 +1,4 @@
-function writeTable(opts, fileName, T)
+function writeTable(opts, fileName, T, rowNames)
 % codes.utils.saveCsv saves the content of a database as a CSV file.
 %
 % Usage: codes.utils.saveCsv(opts, fileName, db)

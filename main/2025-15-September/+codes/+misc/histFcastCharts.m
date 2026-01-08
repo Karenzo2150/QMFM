@@ -1,0 +1,93 @@
+function histFcastCharts
+
+% MINECOFIN Quarterly Macro-Fiscal Outlook
+% This file constist of charts for Working paper 
+% Charts and tables for historcal forecast, filter and forecast and shock
+% decomposition
+%%
+% Historical forecast charts for main indicators
+% Create report
+rprt = report.new('Historical model-based forecasts');
+% -------- Setup --------
+
+opts = mainSettings();
+optsHF = opts.histForecast;
+
+codes.utils.writeMessage(mfilename + ": loading model and data ...");
+
+% Load historical forecasts
+tmp     = codes.utils.loadResult(opts, "histForecast");
+dbHistFcast = tmp.dbHistFcast;
+
+% Adjust histForecast range
+tmp = databank.range(dbHistFcast(1));
+optsHF.range = tmp(2:end);
+
+% Load smoothed data
+tmp = codes.utils.loadResult(opts, "filter");
+dbFilt = tmp.dbFilt;
+
+% Load model
+tmp = codes.utils.loadResult(opts, "model");
+m = tmp.m;
+
+% Get variable names and comments
+
+xNamesAll = string(get(m, "xnames"));
+xDescrAll = string(get(m, "xdescript"));
+
+paramNum = length(opts.parameterNames);
+
+% Legend
+legends = codes.reporting.createParamLegend(opts);
+
+xNames = optsHF.variables;
+xDescr = codes.utils.selectFromList(xNames, xNamesAll, xDescrAll);
+
+enamesAll = string(get(m, "enames"));
+edescrAll = string(get(m, "edescript"));
+
+pnamesAll = string(get(m, "pnames"));
+pdescrAll = string(get(m, "pdescript"));
+
+pnamesAll = [pnamesAll, "std_" + enamesAll];
+pdescrAll = [pdescrAll, edescrAll];
+%%
+% Historical forecast charts
+
+for i = 1:length(optsHF.variables)
+  
+  varName = optsHF.variables(i);
+  
+  figureTitle = xDescr(i) + " [" + xNames(i) + "]";
+  rprt.figure(char(figureTitle));
+  
+  for n = 1:paramNum
+    
+    if paramNum > 1
+      rprt.graph(char(legends(n)), 'axesOptions', {'box','off','fontsize',9});
+    else
+      rprt.graph('', 'axesOptions', {'box','off','fontsize',9});
+    end
+    
+    % "Actual"
+    plot.series('', dbFilt.mean.(varName){:, n}, 'plotOptions', opts.style_hist_actual);
+    
+    % Forecasts
+    plot.series('', [dbHistFcast(:, n).(varName)], 'plotOptions', opts.style_hist_forecast);
+    
+    % Markers
+    markers = Series();
+    
+    for t = 1:length(optsHF.range)
+      tmp = dbHistFcast(t, n).(varName);
+      markers(optsHF.range(t) - 1) = tmp(optsHF.range(t) - 1);
+    end
+    rprt.series('', markers, 'plotOptions', opts.style_hist_mark);
+    
+  end
+  
+end
+
+%end
+

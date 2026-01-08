@@ -146,6 +146,8 @@ for n = 1 : paramNum
   
 end
 
+% Historical forecast charts
+
 for i = 1:length(optsHF.variables)
   
   varName = optsHF.variables(i);
@@ -180,6 +182,7 @@ for i = 1:length(optsHF.variables)
   
 end
 
+% Forecast error evaluation tables
 for n = 1:paramNum
   
   rowNames = xDescr + " [" + xNames + "]";
@@ -225,7 +228,7 @@ codes.utils.writeMessage(mfilename + ": done.");
 
 nRows = numel(rowNames);
 nCols = numel(colNames);
-
+dataRMSERW = round(dataRMSERW(:)', 3);
 dataMat = reshape(dataRMSERW(:), nRows, nCols);
 
 T = array2table( ...
@@ -241,7 +244,7 @@ codes.utils.writeMessage(mfilename + ": done.");
 % RMSE table
 nRows = numel(rowNames);
 nCols = numel(colNames);
-
+dataRMSE = round(dataRMSE(:)', 3);
 dataMat = reshape(dataRMSE(:), nRows, nCols);
 
 T = array2table( ...
@@ -252,4 +255,21 @@ T = array2table( ...
 
 codes.utils.writeMessage(mfilename + ": compiling the report ...");
 codes.utils.writeTable(opts, "RMSE", T);
+codes.utils.writeMessage(mfilename + ": done.");
+
+% Means absolute error
+
+nRows = numel(rowNames);
+nCols = numel(colNames);
+dataMAE = round(dataMAE(:)', 3);
+dataMat = reshape(dataMAE(:), nRows, nCols);
+
+T = array2table( ...
+    dataMat, ...
+    'RowNames', cellstr(rowNames), ...
+    'VariableNames', matlab.lang.makeValidName(cellstr(colNames)) ...
+);
+
+codes.utils.writeMessage(mfilename + ": compiling the report ...");
+codes.utils.writeTable(opts, "MeanAbsError", T);
 codes.utils.writeMessage(mfilename + ": done.");

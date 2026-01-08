@@ -146,6 +146,8 @@ for n = 1 : paramNum
   
 end
 
+% Historical forecast charts
+
 for i = 1:length(optsHF.variables)
   
   varName = optsHF.variables(i);
@@ -180,13 +182,14 @@ for i = 1:length(optsHF.variables)
   
 end
 
+% Forecast error evaluation tables
 for n = 1:paramNum
   
   rowNames = xDescr + " [" + xNames + "]";
   colNames = num2str((1:8)') + "q";
   
   matrixTitle = "Root-mean-square error, " + legends(n);
-  dataRMSE        = databank.toSeries(rmse(n));
+  dataRMSE        = round(databank.toSeries(rmse(n));
   rprt.matrix(char(matrixTitle), dataRMSE(:)', ...
     'rownames', cellstr(rowNames), ...
     'colnames', cellstr(colNames), ...
@@ -252,4 +255,21 @@ T = array2table( ...
 
 codes.utils.writeMessage(mfilename + ": compiling the report ...");
 codes.utils.writeTable(opts, "RMSE", T);
+codes.utils.writeMessage(mfilename + ": done.");
+
+% Means absolute error
+
+nRows = numel(rowNames);
+nCols = numel(colNames);
+
+dataMat = reshape(dataMAE(:), nRows, nCols);
+
+T = array2table( ...
+    dataMat, ...
+    'RowNames', cellstr(rowNames), ...
+    'VariableNames', matlab.lang.makeValidName(cellstr(colNames)) ...
+);
+
+codes.utils.writeMessage(mfilename + ": compiling the report ...");
+codes.utils.writeTable(opts, "MeanAbsError", T);
 codes.utils.writeMessage(mfilename + ": done.");

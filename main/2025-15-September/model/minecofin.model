@@ -40,10 +40,10 @@
 "Exptd. cons. gap, %"           e_l_cons_gap
 "Consumption, 100*log"          l_cons
 "Consumption, ann. QQ %"        dl_cons
-"Consumption, YY %"             d4l_cons
+"Consumption, YoY %"             d4l_cons
 "Consumption tnd., 100*log"     l_cons_tnd
 "Consumption tnd., ann. QQ %"   dl_cons_tnd
-"Consumption tnd., YY %"        d4l_cons_tnd
+"Consumption tnd., YoY %"        d4l_cons_tnd
 
 % ----- Private investment -----
 
@@ -51,20 +51,20 @@
 "Exptd. investment gap, %"    e_l_inv_gap
 "Investment, 100*log"         l_inv
 "Investment, ann. QQ %"       dl_inv
-"Investment, YY %"            d4l_inv
+"Investment, YoY %"            d4l_inv
 "Investment tnd., 100*log"    l_inv_tnd
 "Investment tnd., ann. QQ %"  dl_inv_tnd
-"Investment tnd., YY %"       d4l_inv_tnd
+"Investment tnd., YoY %"       d4l_inv_tnd
 
 % ----- Government demand for G&S -----
 
 "Gov. demand gap, %"            l_gdem_gap
 "Gov. demand, 100*log"          l_gdem
 "Gov. demand, ann. QQ %"        dl_gdem
-"Gov. demand, YY %"             d4l_gdem
+"Gov. demand, YoY %"             d4l_gdem
 "Gov. demand, tnd., 100*log"    l_gdem_tnd
 "Gov. demand, tnd., ann. QQ %"  dl_gdem_tnd
-"Gov. demand, tnd., YY %"       d4l_gdem_tnd
+"Gov. demand, tnd., YoY %"       d4l_gdem_tnd
 
 % ----- Exports of G&S -----
 
@@ -73,20 +73,20 @@
 "Export RMCI, %"          rmci_exp
 "Export, 100*log"         l_exp
 "Export, ann. QQ %"       dl_exp
-"Export, YY %"            d4l_exp
+"Export, YoY %"            d4l_exp
 "Export tnd., 100*log"    l_exp_tnd
 "Export tnd., ann. QQ %"  dl_exp_tnd
-"Export tnd., YY %"       d4l_exp_tnd
+"Export tnd., YoY %"       d4l_exp_tnd
 
 % ----- Imports of G&S -----
 
 "Import gap, %"           l_imp_gap
 "Import, 100*log"         l_imp
 "Import, ann. QQ %"       dl_imp
-"Import, YY %"            d4l_imp
+"Import, YoY %"            d4l_imp
 "Import tnd., 100*log"    l_imp_tnd
 "Import tnd., ann. QQ %"  dl_imp_tnd
-"Import tnd., YY %"       d4l_imp_tnd
+"Import tnd., YoY %"       d4l_imp_tnd
 
 % ----- GDP -----
 
@@ -94,10 +94,10 @@
 "Exptd. output gap, %"  e_l_y_gap
 "GDP, 100*log"          l_y
 "GDP, ann. QQ %"        dl_y
-"GDP, YY %"             d4l_y
+"GDP, YoY %"             d4l_y
 "GDP tnd., 100*log"     l_y_tnd
 "GDP tnd., ann. QQ %"   dl_y_tnd
-"GDP tnd., YY %"        d4l_y_tnd
+"GDP tnd., YoY %"        d4l_y_tnd
 
 % ----- Agricultural output -----
 
@@ -105,10 +105,10 @@
 "Exptd. agric. output gap, %"   e_l_y_agr_gap
 "Agric. GDP, 100*log"           l_y_agr
 "Agric. GDP, ann.QQ %"          dl_y_agr
-"Agric. GDP, YY %"              d4l_y_agr
+"Agric. GDP, YoY %"              d4l_y_agr
 "Agric. GDP tnd., 100*log"      l_y_agr_tnd
 "Agric. GDP tnd., ann.QQ %"     dl_y_agr_tnd
-"Agric. GDP tnd., YY %"         d4l_y_agr_tnd
+"Agric. GDP tnd., YoY %"         d4l_y_agr_tnd
 
 % ------------------------
 % -------- Prices --------
@@ -118,28 +118,28 @@
 "Headline CPI, 100*log"           l_cpi
 "Headline CPI, ann. QQ %"         dl_cpi
 "Exptd. Headline CPI, ann. QQ %"  e_dl_cpi
-"Headline CPI, YY %"              d4l_cpi
+"Headline CPI, YoY %"              d4l_cpi
 
 % ----- Core CPI -----
 
 "Core CPI, 100*log"            l_cpi_core
 "Core CPI, ann. QQ %"          dl_cpi_core
 "Exptd. Core CPI, ann. QQ %"   e_dl_cpi_core
-"Core CPI, YY %"               d4l_cpi_core
+"Core CPI, YoY %"               d4l_cpi_core
 
 % ----- Food CPI -----
 
 "Food CPI, 100*log"           l_cpi_food
 "Food CPI, ann. QQ %"         dl_cpi_food
 "Exptd. Food CPI, ann. QQ %"  e_dl_cpi_food
-"Food CPI, YY %"              d4l_cpi_food
+"Food CPI, YoY %"              d4l_cpi_food
 
 % ----- Energy CPI -----
 
 "Energy CPI, 100*log"           l_cpi_ener
 "Energy CPI, ann. QQ %"         dl_cpi_ener
 "Exptd. energy CPI, ann. QQ %"  e_dl_cpi_ener
-"Energy CPI, YY %"              d4l_cpi_ener
+"Energy CPI, YoY %"              d4l_cpi_ener
 
 % ---------------------------------
 % -------- Relative prices --------
@@ -152,11 +152,11 @@
 
 "Core rel. price, 100*log"          l_rp_cpi_core
 "Core rel. price, ann. QQ %"        dl_rp_cpi_core
-"Core rel. price, YY %"             d4l_rp_cpi_core
+"Core rel. price, YoY %"             d4l_rp_cpi_core
 "Core rel. price gap, %"            l_rp_cpi_core_gap
 "Core rel. price tnd., 100*log"     l_rp_cpi_core_tnd
 "Core rel. price tnd., ann. QQ %"   dl_rp_cpi_core_tnd
-"Core rel. price tnd., YY %"        d4l_rp_cpi_core_tnd
+"Core rel. price tnd., YoY %"        d4l_rp_cpi_core_tnd
 
 "Dir. ext. eff. in core, ann. QQ %" dl_cpi_core_direct
 
@@ -164,11 +164,11 @@
 
 "Food rel. price, 100*log"          l_rp_cpi_food
 "Food rel. price, ann QQ. %"        dl_rp_cpi_food
-"Food rel. price, YY %"             d4l_rp_cpi_food
+"Food rel. price, YoY %"             d4l_rp_cpi_food
 "Food rel. price gap, %"            l_rp_cpi_food_gap
 "Food rel. price tnd., 100*log"     l_rp_cpi_food_tnd
 "Food rel. price tnd., ann. QQ %"   dl_rp_cpi_food_tnd
-"Food rel. price tnd., YY %"        d4l_rp_cpi_food_tnd
+"Food rel. price tnd., YoY %"        d4l_rp_cpi_food_tnd
 
 "Dir. ext. eff. in food, ann. QQ %" dl_cpi_food_direct
 
@@ -176,11 +176,11 @@
 
 "Energy rel. price, 100*log"          l_rp_cpi_ener
 "Energy rel. price, ann. QQ %"        dl_rp_cpi_ener
-"Energy rel. price, YY %"             d4l_rp_cpi_ener
+"Energy rel. price, YoY %"             d4l_rp_cpi_ener
 "Energy rel. price gap, %"            l_rp_cpi_ener_gap
 "Energy rel. price tnd., 100*log"     l_rp_cpi_ener_tnd
 "Energy rel. price tnd., ann. QQ %"   dl_rp_cpi_ener_tnd
-"Energy rel. price tnd., YY %"        d4l_rp_cpi_ener_tnd
+"Energy rel. price tnd., YoY %"        d4l_rp_cpi_ener_tnd
 
 "Dir. ext. eff. in energy, ann. QQ %" dl_cpi_ener_direct
 
@@ -207,12 +207,12 @@
 
 % ----- Inflation target -----
 
-"Inflation target, YY %"            d4l_cpi_tar
-"Headline CPI dev, 4-Q ahead YY %"  d4l_cpi_dev
+"Inflation target, YoY %"            d4l_cpi_tar
+"Headline CPI dev, 4-Q ahead YoY %"  d4l_cpi_dev
 
-"Impl. core infl. target, YY %"   d4l_cpi_core_tar
-"Impl. food infl. target, YY %"   d4l_cpi_food_tar
-"Impl. ener. infl. target, YY %"  d4l_cpi_ener_tar
+"Impl. core infl. target, YoY %"   d4l_cpi_core_tar
+"Impl. food infl. target, YoY %"   d4l_cpi_food_tar
+"Impl. ener. infl. target, YoY %"  d4l_cpi_ener_tar
 
 % ----- Real monetary condition index -----
 
@@ -224,12 +224,12 @@
 
 % ----- Nominal exchange rate ------
 
-"Exchng. rate, 100*log"         l_s
-"Exchng. rate, ann. QQ %"       dl_s
-"Exchng. rate, YY %"            d4l_s
-"Exptd. exchng. rate, 100*log"  e_l_s
+"Exchang. rate, 100*log"         l_s
+"Exchang. rate, ann. QQ %"       dl_s
+"Exchang. rate, YoY %"            d4l_s
+"Exptd. exchang. rate, 100*log"  e_l_s
 
-"Exchng rate target, ann. QQ %"   dl_s_tar
+"Exchang. rate target, ann. QQ %"   dl_s_tar
 
 % ----- Sovereign risk premium -----
 
@@ -237,23 +237,23 @@
 
 % ----- Real exchange rate -----
 
-"Real exchng. rate, 100*log"          l_z
-"Real exchng. rate, ann. QQ %"        dl_z
-"Real exchng. rate, YY %"             d4l_z
-"Exptd. RER, ann. QQ %"               e_dl_z
-"Real exchng. rate trend, 100*log"    l_z_tnd
-"Real exchng. rate trend, ann. QQ %"  dl_z_tnd
-"Real exchng. rate trend, YY %"       d4l_z_tnd
-"Exp. RER trend., ann. QQ %"          e_dl_z_tnd
-"Real exchng. rate gap, %"            l_z_gap
+"Real exchang. rate, 100*log"           l_z
+"Real exchang. rate, ann. QQ %"         dl_z
+"Real exchang. rate, YoY %"             d4l_z
+"Exptd. RER, ann. QQ %"                 e_dl_z
+"Real exchang. rate trend, 100*log"     l_z_tnd
+"Real exchang. rate trend, ann. QQ %"   dl_z_tnd
+"Real exchang. rate trend, YoY %"       d4l_z_tnd
+"Exp. RER trend., ann. QQ %"            e_dl_z_tnd
+"Real exchang. rate gap, %"             l_z_gap
 
 % -------- Money demand --------
 
 "Money, 100*log"                  l_md
 "Real money, 100*log"             l_rmd
 "Real money, ann. QQ %"           dl_rmd
-"Real money, YY %"                d4l_rmd
-"Change of velocity, ann. QQ %"   dl_v
+"Real money, YoY %"                d4l_rmd
+"Velocity, ann. QQ %"              dl_v
 
 % ------------------------------------
 % -------- External variables --------
@@ -266,7 +266,7 @@
 
 "Foreign CPI, 100*log"          l_cpistar
 "Foreign CPI, ann. QQ %"        dl_cpistar
-"Foreign CPI, YY %"             d4l_cpistar
+"Foreign CPI, YoY %"             d4l_cpistar
 "Exptd. foreign CPI, 100*log"   e_dl_cpistar
 
 % ----- Foreign interest rate -----
@@ -278,33 +278,33 @@
 
 "Foreign food price, 100*log"     l_foodstar
 "Foreign food price, ann. QQ %"   dl_foodstar
-"Foreign food price, YY %"        d4l_foodstar
+"Foreign food price, YoY %"        d4l_foodstar
 
 "Foreign rel. food price, 100*log"    l_rp_foodstar
 "Foreign rel. food price, ann. QQ %"  dl_rp_foodstar
-"Foreign rel. food price, YY %"       d4l_rp_foodstar
+"Foreign rel. food price, YoY %"       d4l_rp_foodstar
 
 "Foreign rel. food price gap, %"  l_rp_foodstar_gap
 
 "Foreign rel. food price tnd., 100*log"     l_rp_foodstar_tnd
 "Foreign rel. food price tnd., ann. QQ %"   dl_rp_foodstar_tnd
-"Foreign rel. food price tnd., YY %"        d4l_rp_foodstar_tnd
+"Foreign rel. food price tnd., YoY %"        d4l_rp_foodstar_tnd
 
 % ----- World energy prices -----
 
 "Foreign ener. price, 100*log"    l_enerstar
 "Foreign ener. price, ann. QQ %"  dl_enerstar
-"Foreign ener. price, YY %"       d4l_enerstar
+"Foreign ener. price, YoY %"       d4l_enerstar
 
 "Foreign rel. ener. price, 100*log"     l_rp_enerstar
 "Foreign rel. ener. price, ann. QQ %"   dl_rp_enerstar
-"Foreign rel. ener. price, YY %"        d4l_rp_enerstar
+"Foreign rel. ener. price, YoY %"        d4l_rp_enerstar
 
 "Foreign rel. ener. price gap, %"   l_rp_enerstar_gap
 
 "Foreign rel. ener. price tnd., 100*log"    l_rp_enerstar_tnd
 "Foreign rel. ener. price tnd., ann. QQ %"  dl_rp_enerstar_tnd
-"Foreign rel. ener. price tnd., YY %"       d4l_rp_enerstar_tnd
+"Foreign rel. ener. price tnd., YoY %"       d4l_rp_enerstar_tnd
 
 % ---------------------------------------------
 % ------------- Transition shocks -------------
@@ -351,7 +351,7 @@
 "Export shock, ann. QQ %"       shock_dl_exp_tnd
 "Import tnd. shock, ann. QQ %"  shock_dl_imp_tnd
 
-"CPI target shocck, YY %"                   shock_d4l_cpi_tar
+"CPI target shocck, YoY %"                   shock_d4l_cpi_tar
 "Food rel. price. tnd. shock, ann. QQ %"    shock_dl_rp_cpi_food_tnd
 "Energy rel. price. tnd. shock, ann. QQ %"  shock_dl_rp_cpi_ener_tnd
 "RER tnd. shock, ann. QQ %"                 shock_dl_z_tnd
@@ -390,7 +390,7 @@
 "SS of GDP growth, ann. QQ %"       ss_dl_y_tnd
 "SS of agric.GDP growth, ann. QQ %" ss_dl_y_agr_tnd
 
-"CPI target, YY %"                  ss_d4l_cpi_tar
+"CPI target, YoY %"                  ss_d4l_cpi_tar
 "SS of food rel. price, ann. QQ %"  ss_dl_rp_cpi_food_tnd
 "SS of ener. rel. price, ann. QQ %" ss_dl_rp_cpi_ener_tnd
 
