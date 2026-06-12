@@ -190,7 +190,7 @@ opts.reportModel.varDecomp.variables  = [...
 opts.reportModel.varDecomp.contribs   = 6;
 
 % Historical range of vardecomp
-opts.reportModel.varDecomp.histRange = qq(2006,1) : qq(2022,2);
+opts.reportModel.varDecomp.histRange = qq(2006, 1) : qq(2022, 2);
 
 % Variables in the standard deviation comparison
 opts.reportModel.stdComp.variables  = [
@@ -265,12 +265,12 @@ opts.reportModel.stdComp.shocks = [
   ];
 
 % Range of comparison
-opts.reportModel.stdComp.range = qq(2006,1) : qq(2022,2);
+opts.reportModel.stdComp.range = qq(2006, 1) : qq(2022, 2);
 
 %% Historical filter options
 
 % Filtered range
-opts.filterHistory.range = qq(2006,1) : qq(2023,1);
+opts.filterHistory.range = qq(2006, 1) : qq(2023, 1);
 
 % Variables whose trend/gap decomposition is plotted; AK: can't add variables w/o changing reporting codes
 opts.filterHistory.trendGapVars = [
@@ -366,10 +366,10 @@ opts.filterHistory.shockDecompVars = [
   ];
 
 % Table range
-opts.filterHistory.rangeTable = qq(2019,1) : qq(2023,1);
+opts.filterHistory.rangeTable = qq(2019, 1) : qq(2023, 1);
 
 % Plot range
-opts.filterHistory.rangePlot = qq(2015,1) : qq(2023,2);
+opts.filterHistory.rangePlot = qq(2015, 1) : qq(2023, 2);
 
 % Grouping of shocks in the shock decomposition
 
@@ -452,7 +452,7 @@ opts.filterHistory.shockDecompGroups.Rest = "Init/determ.";
 %% Historical forecast options
 
 % Range of historical forecast
-opts.histForecast.range = qq(2016,1) : qq(2022,4);
+opts.histForecast.range = qq(2016, 1) : qq(2022, 4);
 
 % Horizon of historical forecast
 opts.histForecast.horizon = 8;
@@ -535,7 +535,7 @@ opts.histForecast.exogvars = [
 %% Forecast options
 
 % Horizon of forecast
-opts.forecast.range = qq(2023,2) : qq(2026,4); % extended forward each Q if new data
+opts.forecast.range = qq(2023, 2) : qq(2026, 4); % extended forward each Q if new data
  
 % % Name of the forecast(s) "Baseline", "Alternative"
 % opts.forecast.scenarioNames = [
@@ -554,13 +554,13 @@ opts.forecast.scenarioLegends = ...
 %% Report forecast options
 
 % Range of the graphs in the forecast report
-opts.forecastReport.plotRange = qq(2017,1) : qq(2026,4);% extend 2026Q4
+opts.forecastReport.plotRange = qq(2017, 1) : qq(2026, 4);% extend 2026Q4
 
 % Range of the highlighted area i.e. highlight recent past
-opts.forecastReport.highlightRange = qq(2015,1) : qq(2023,1);% fr2022=fcastQ3 
+opts.forecastReport.highlightRange = qq(2015, 1) : qq(2023, 1);% fr2022=fcastQ3 
 
 % Range of the tables in the forecast report
-opts.forecastReport.tableRange = qq(2021,1) : qq(2024,4); %extend 2024Q4
+opts.forecastReport.tableRange = qq(2021, 1) : qq(2024, 4); %extend 2024Q4
 
 % Range for annualized series
 opts.forecastReport.tableRange_ann = yy(2022) : yy(2026);

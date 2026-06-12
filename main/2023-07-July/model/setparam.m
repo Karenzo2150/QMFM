@@ -1,4 +1,4 @@
-function p = setparam_reclbr()
+function p = setparam()
 
 % -------------------------------
 % -------- Steady states --------

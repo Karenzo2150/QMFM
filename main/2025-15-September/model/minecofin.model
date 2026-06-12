@@ -7,7 +7,7 @@
 % --------------------------------
 % -------- Fiscal policy ---------
 
-"Fiscal impulse, % of GDP"  fisc_imp
+"Fiscal impulse, % of GDP"    fisc_imp
 
 "Budget deficit, % of GDP"    def_y
 "Struct. deficit, % of GDP"   def_y_str

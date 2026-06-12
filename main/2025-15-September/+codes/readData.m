@@ -205,7 +205,7 @@ end
 db.enerGEEstar = exp(log(db.enerGEEstar) + log(17.66)); % $17.7 is oil price 1995Q1
 
 % if we want to use enerGEEstar instead of GAS, then henceforth: (ak Oct 13 2023)
-%db.enerstar = db.enerGEEstar; % if commented we dont use GEE
+% db.enerstar = db.enerGEEstar; % if commented we dont use GEE
 
 % -------- Calculate foreign relative prices --------
 
