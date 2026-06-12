@@ -16,8 +16,8 @@ optsCurr = mainSettings();
 optsComp = optsCurr.compOpts;
 
 tmp_curr = codes.utils.loadResult(optsCurr, "filter");
-% tmp_comp = codes.utils.loadResult(optsComp, "filter");
-tmp_comp = codes.utils.loadResult(optsCurr, "filterComp");
+tmp_comp = codes.utils.loadResult(optsComp, "filter");
+% tmp_comp = codes.utils.loadResult(optsCurr, "filterComp");
 
 tmp = codes.utils.loadResult(optsCurr, "model");
 m = tmp.m;

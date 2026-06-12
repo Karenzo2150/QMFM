@@ -15,8 +15,8 @@ function dbObs = Historical(dbObs)  %
 % assume gdem_y trend at 24.5% (26.5) meaning slightly lower 2% points of GDP lower than historical trend: 
 % to bend down structural govt demand 2017-20
 % set structural level (trend) of govt demand
-% rngTune = qq(2017, 1): qq(2024, 2);
-% dbObs.tune_gdem_y_str(rngTune) = 24.5;
+rngTune = qq(2017, 1): qq(2024, 2);
+dbObs.tune_gdem_y_str(rngTune) = 24.5;
 
 %% GDP extended filter for Nowcast Q 2025Q2-3, alternatively tune most recent Q with prel. NA
 % filtration range set to a few Q beyond data (here: 2025Q2-3 with hist tunes for y-on-y GDP growth from Nowcast(no s.a. needed)
