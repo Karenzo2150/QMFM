@@ -103,7 +103,7 @@ end
 % -------- Read the additional data file --------
 codes.utils.writeMessage(mfilename + ": reading data from " + opts.addDataFile + "...");
 
-gpm = databank.fromCSV(addDataFullFile); % reads addData that has gpm for RIR, Poil and BERfiscal
+gpm = databank.fromCSV(addDataFullFile);
 
 dbRaw = dboverlay(gpm, dbRaw);
 
@@ -116,15 +116,12 @@ codes.utils.writeMessage(mfilename + ": done");
 %%
 %-------Generate a report for raw data----------------
 %-------load data---------------------
-tmp = codes.utils.loadResult(opts, "dataRaw");
-
 % ------------- Create the report -------------
 % ------------- Publish report -------------
 
 reportTitle = "Data screening report";
 rprt = report.new(char(reportTitle));
-
-rprt.section('National Account (NA)');
+rprt.section('National Accounts (NA)');
 rprt.pagebreak;  
 varNames =  [        
         "ny"
@@ -221,7 +218,7 @@ varDescr = [
 
 rprt = addVariableCharts(rprt, dbRaw, varNames, varDescr, opts);
 
-tableTitle = 'Price indices';
+tableTitle = 'External (BOP) indicators';
 rprt.table(char(tableTitle), 'range', rngTable, 'typeface', '\small', 'long', true, ...
   'vline', rngTable(1) -1);
 
@@ -247,15 +244,15 @@ varNames = [
         ];
 
 varDescr = [
-        "Total revenue, Mln USD"
-        "Total grants, Mln USD"
-        "Total expenditure, Mln USD"
-        "Capital expenditure, Mln USD"
-        "Current expenditure, Mln USD"
-        "Wages (Incl.LG&EBUs), Mln USD"
-        "Purchases of G&S, Mln USD"
-        "Interest payments domestic, Mln RWF"
-        "Interest payments foreign, Mln USD"
+        "Total revenue, Bln RWF"
+        "Total grants, Bln RWF"
+        "Total expenditure, Bln RWF"
+        "Capital expenditure, Bln RWF"
+        "Current expenditure, Bln RWF"
+        "Wages (Incl.LG&EBUs), Bln RWF"
+        "Purchases of G&S, Bln RWF"
+        "Interest payments domestic, Bln RWF"
+        "Interest payments foreign, Bln RWF"
 
         ];
 rprt = addVariableCharts(rprt, dbRaw, varNames, varDescr, opts);
@@ -312,8 +309,6 @@ end
 codes.utils.writeMessage(mfilename + ": compiling Data screening report ...");
 codes.utils.saveReport(opts, "dataScreeningReport", rprt);
 codes.utils.writeMessage(mfilename + ": dataScreeningReport" + ": done");
-%%
-
 end
 
 function rprt = addVariableCharts(rprt, dbRaw, varNames, varDescr, opts)

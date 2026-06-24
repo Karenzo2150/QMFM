@@ -7,6 +7,7 @@ function dbObs = Historical(dbObs)  %
 % incoporate the assumption/judgement of a potential COVID-19 effect 
 % on potential/trend GDP growth (i.e., structural effect on industrial
 % production--longTerm shutdown and loss of labor)
+
 % rngTune = qq(2022, 4);
 % dbObs.tune_l_y_gap(rngTune) = -2;
 
@@ -15,10 +16,10 @@ function dbObs = Historical(dbObs)  %
 % assume gdem_y trend at 24.5% (26.5) meaning slightly lower 2% points of GDP lower than historical trend: 
 % to bend down structural govt demand 2017-20
 % set structural level (trend) of govt demand
-rngTune = qq(2017, 1): qq(2024, 2);
-dbObs.tune_gdem_y_str(rngTune) = 24.5;
+% rngTune = qq(2017, 1): qq(2024, 2);
+% dbObs.tune_gdem_y_str(rngTune) = 24.5;
 
-%% GDP extended filter for Nowcast Q 2025Q2-3, alternatively tune most recent Q with prel. NA
+%% GDP extended filter for Nowcast Q 2025Q3, alternatively tune most recent Q with prel. NA
 % filtration range set to a few Q beyond data (here: 2025Q2-3 with hist tunes for y-on-y GDP growth from Nowcast(no s.a. needed)
 % filter distributes shocks among other demands, so movement in GDP not only attributed to cons shock (cf Baseline tune)
 % rngTune = qq(2025, 3) : qq(2025, 3);
@@ -83,7 +84,7 @@ dbObs.tune_gdem_y_str(rngTune) = 24.5;
 %% % soft-tune private investment shock, to reflect Bugesera (gov netLending,oexp) sum 5.2% GDP 2025/26-2027/28
 % Additonal to Qatar equity investiment 
 % effect spread over 12Q, markup 1/(investment/GDP)=1/0.15=6,take about half
-% to tune the inv_gap shock for extended filter , need to shock_l_inv_gap
+% to tune the inv_gap shock for extended filter, need to shock_l_inv_gap
 % in model section of shocks for expert judgement
 % rngTune = qq(2025, 3);
 % dbObs.tune_shock_l_inv_gap(rngTune) = [4.3];

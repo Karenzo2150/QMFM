@@ -23,7 +23,7 @@ end
 if opts.filterHistory.run
   codes.filterHistory()
 end
- if opts.misc.reportCompareFilter.run
+ if opts.reportCompareFilter.run
   codes.misc.reportCompareFilter()
 end
 %% Report model properties
@@ -37,6 +37,7 @@ end
 if opts.reportHistory.run
   codes.reportHistory()
 end
+
 
 %% Calculate historical forecasts
 
@@ -83,12 +84,6 @@ if opts.reportForecastChangeDecomp.run
   codes.reportForecastChangeDecomp()
 end
 
-%% Report/plot charts for WP, forcast presentation 
-if opts.misc.histFcastCharts.run
-   codes.misc.histFcastCharts()
-   codes.misc.supplemtables()
-end
-   
 %% Finish off
 
 fprintf("mainDriver.m finished at %s\nElapsed time: %0.2f seconds.\n", datestr(now), toc)

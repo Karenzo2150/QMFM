@@ -17,7 +17,9 @@ optsComp = optsCurr.compOpts;
 
 tmp_curr = codes.utils.loadResult(optsCurr, "filter");
 tmp_comp = codes.utils.loadResult(optsComp, "filter");
-% tmp_comp = codes.utils.loadResult(optsCurr, "filterComp");
+%tmp_comp = codes.utils.loadResult(optsCurr, "filtComp"); % can be used to
+% for comparison of filter results in same round as historical tuning
+% options altered.
 
 tmp = codes.utils.loadResult(optsCurr, "model");
 m = tmp.m;

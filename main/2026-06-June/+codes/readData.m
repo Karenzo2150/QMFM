@@ -44,7 +44,7 @@ codes.utils.writeMessage(mfilename ...
 
 t = readtable(mainDataFullFile, ...
   "Sheet",    "Quarterly data", ...
-  "TextType", "string"); %optional'VariableNamingRule','preserve'---
+  "TextType", "string"); % optional'VariableNamingRule','preserve'---
 
 
 % --------- Copy variables into db as time series ---------
@@ -115,9 +115,9 @@ end
 
 codes.utils.writeMessage(mfilename + ": reading data from " + opts.addDataFile + "...");
 
-gpm = databank.fromCSV(addDataFullFile); % reads addData that has gpm for RIR, Poil and BERfiscal
+cbo = databank.fromCSV(addDataFullFile); % reads additional RIR from central budgetary office (cbo), fiscal data from budget for tuning
 
-db = dboverlay(gpm, db); % enerstar exists in both datab, it takes 2d; if we want enerstar fr WEO, db must be 2d
+db = dboverlay(cbo, db); % enerstar exists in both datab, it takes 2d; if we want enerstar fr WEO, db must be 2d
 
 % -------------------------------------------------------------------------
 % ------------- Adjust series in db -------------
