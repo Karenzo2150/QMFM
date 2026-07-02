@@ -8,7 +8,7 @@ function opts = mainSettings
 
 opts.roundId        = "2026 June Forecast";
 opts.modelFile      = "minecofin";
-opts.mainDataFile   = "2026-06-06"; % name of data/Rwametric file 
+opts.mainDataFile   = "2026-06-25"; % name of data/Rwametric file 
 opts.addDataFile    = "2026-06-01"; % has CBO proj RIR-US and old GTM numbers
 opts.compRound      = "main/2025-15-September"; % comparison round
 
@@ -41,28 +41,28 @@ opts.reportModel.varDecomp.run        = 1;
 opts.reportModel.stdComp.run          = 1;
 opts.reportModel.equations.run        = 1;
 
-opts.reportHistory.run                = 0;
+opts.reportHistory.run                = 1;
 opts.reportHistory.obs.run            = 1;
 opts.reportHistory.trends.run         = 1;
 opts.reportHistory.eqDecomps.run      = 1;
 opts.reportHistory.shockDecomps.run   = 1;
 opts.reportHistory.shocks.run         = 1;
-opts.misc.reportCompareFilter.run   = 1; % EvM added to diagnose filter results
+opts.misc.reportCompareFilter.run     = 1; % EvM added to diagnose filter results
 
 % Historal/in-sample forecast
 
-opts.calcHistForecast.run             = 0;
-opts.reportHistForecast.run           = 0;
+opts.calcHistForecast.run             = 1;
+opts.reportHistForecast.run           = 1;
 
 % Forecast/out-of sample
-opts.calcForecast.run                 = 0;
-opts.reportForecast.run               = 0;
-opts.reportCompareForecast.run        = 0;
-opts.reportForecastChangeDecomp.run   = 0;
+opts.calcForecast.run                 = 1;
+opts.reportForecast.run               = 1;
+opts.reportCompareForecast.run        = 1;
+opts.reportForecastChangeDecomp.run   = 1;
 
 % Report/plot charts for WP, forcast presentation 
 opts.misc.histFcastCharts.run          = 0;
-
+opts.misc.supplemtables.run            = 0;
 
 %% Steady state report
 
@@ -275,7 +275,7 @@ opts.reportModel.stdComp.range = qq(2006, 1) : qq(2023, 4);
 %% Historical filter options
 
 % Filtered range
-opts.filterHistory.range = qq(2006, 1) : qq(2025, 4); % default 2024Q2 if data; extend filter for shocktuning +2Q
+opts.filterHistory.range = qq(2006, 1) : qq(2026, 1); % default 2024Q2 if data; extend filter for shocktuning +2Q
 
 % Variables whose trend/gap decomposition is plotted; AK: can't add variables w/o changing reporting codes
 opts.filterHistory.trendGapVars = [
@@ -551,7 +551,7 @@ opts.forecast.scenarioNames = ...
 opts.forecast.scenarioLegends = []; % scenarioNames will be used if this is empty
 
 % Forecast shock decomposition range
-opts.forecast.shockDecompRange = qq(2006, 1) : qq(2028, 4);
+opts.forecast.shockDecompRange = qq(2006, 1) : qq(2030, 4);
 
 %% Report forecast options
 

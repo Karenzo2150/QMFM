@@ -8,7 +8,7 @@ function opts = mainSettings
 
 opts.roundId        = "2026 June Forecast";
 opts.modelFile      = "minecofin";
-opts.mainDataFile   = "2026-06-16"; % name of data/Rwametric file 
+opts.mainDataFile   = "2026-06-25"; % name of data/Rwametric file 
 opts.addDataFile    = "2026-06-01"; % has CBO proj RIR-US and old GTM numbers
 opts.compRound      = "main/2025-15-September"; % comparison round
 
@@ -543,7 +543,7 @@ opts.histForecast.exogvars = [
 %% Forecast options
 
 % Horizon of forecast
-opts.forecast.range = qq(2026, 1) : qq(2030, 4); % extended forward each Q if new data
+opts.forecast.range = qq(2026, 2) : qq(2030, 4); % extended forward each Q if new data
  
 opts.forecast.scenarioNames = ...
     ["Baseline"];%,"Alternative"];
@@ -551,7 +551,7 @@ opts.forecast.scenarioNames = ...
 opts.forecast.scenarioLegends = []; % scenarioNames will be used if this is empty
 
 % Forecast shock decomposition range
-opts.forecast.shockDecompRange = qq(2006, 1) : qq(2028, 4);
+opts.forecast.shockDecompRange = qq(2006, 1) : qq(2030, 4);
 
 %% Report forecast options
 

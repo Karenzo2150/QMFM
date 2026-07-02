@@ -266,7 +266,7 @@ varNames   = [
 rprt = codes.reporting.addChartPage(optsCurr, rprt, m, dbCompFcast, plotRange, varNames, figureTitle, legends, highLightRange);
 
 % Main cyclical indicators
-figureTitle = "Main cyclical position (gap) indicators";
+figureTitle = "Main cyclical position (gap)";
 varNames   = [
   "l_y_gap"
   "l_z_gap"

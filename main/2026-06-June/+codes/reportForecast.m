@@ -62,13 +62,13 @@ vLine       = opts.forecast.range(1);
 % Main indicators table with percent changes
 
 varNames   = [
-  "pct4_cpi", "CPI, y-on-y change"
-  "pct4_y",   "GDP, y-on-y change"
-  "pct_i",    "Interbank rate, pct"; % ak jan 1: needs conversion back
-  "pct4_s",   "Exchange rate, y-on-y change"
-  "def_y",    "Deficit, % of GDP"
+  "pct4_cpi", "CPI (headline), YoY %"
+  "pct4_y",   "GDP, YoY %"
+  "pct_i",    "Interbank rate, %"; 
+  "pct4_s",   "Exchange rate, YoY %"
+  "def_y",    "Deficit (excl. grants), % of GDP"
   "grev_y",    "Govt revenue, % of GDP"
-  "gdem_y",   "Govt demand G&S % of GDP"
+  "gdem_y",   "Govt demand G&S, % of GDP"
   "oexp_y"    "Other spending, % of GDP"
   ];
 
@@ -79,88 +79,88 @@ rprt = codes.reporting.addTablePage(opts, rprt, m, db, tableRange, varNames, tab
 % GDP table with yoy percent changes
 
 varNames   = [
-  "pct4_y",     "GDP, y-on-y change in %"
-  "pct4_cons",  "Consumption, y-on-y change"
-  "pct4_inv",   "Investment, y-on-y change"
-  "pct4_gdem",  "Gov. dem., y-on-y change"
-  "pct4_exp",   "Export, y-on-y change"
-  "pct4_imp",   "Import, y-on-y change"
+  "pct4_y",     "GDP"
+  "pct4_cons",  "Private consumption"
+  "pct4_inv",   "Private investment"
+  "pct4_gdem",  "Gov. demand of G&S."
+  "pct4_exp",   "Export of G&S"
+  "pct4_imp",   "Import of G&S"
   ];
 
-tableTitle = "GDP growth, y-on-y percentage changes";
+tableTitle = "GDP final demand, YoY % change";
 
 rprt = codes.reporting.addTablePage(opts, rprt, m, db, tableRange, varNames, tableTitle, legends, vLine);
 
 % GDP table with q-o-q percent changes, annualized
 
 varNames   = [
-  "pct_y",     "GDP, q-on-q change in %"
-  "pct_cons",  "Consumption, q-on-q change"
-  "pct_inv",   "Investment, q-on-q change"
-  "pct_gdem",  "Gov. dem., q-on-q change"
-  "pct_exp",   "Export, q-on-q change"
-  "pct_imp",   "Import, q-on-q change"
+   "pct_y",     "GDP"
+  "pct_cons",  "Private consumption"
+  "pct_inv",   "Private investment"
+  "pct_gdem",  "Gov. dem.demand of G&S"
+  "pct_exp",   "Export of G&S"
+  "pct_imp",   "Import of G&S"
   ];
 
-tableTitle = "GDP growth, q-on-q change in %, annualized";
+tableTitle = "GDP final demand, QoQ % change. annualized";
 
 rprt = codes.reporting.addTablePage(opts, rprt, m, db, tableRange, varNames, tableTitle, legends, vLine);
 
 % Inflation table with y-o-y percent changes
 
 varNames   = [
-  "pct4_cpi",       "Headline CPI, y-on-y change"
-  "pct4_cpi_core",  "Core CPI, y-on-y change"
-  "pct4_cpi_food",  "Food CPI, y-on-y change"
-  "pct4_cpi_ener",  "Energy CPI, y-on-y change"
+  "pct4_cpi",       "Headline"
+  "pct4_cpi_core",  "Core"
+  "pct4_cpi_food",  "Food"
+  "pct4_cpi_ener",  "Energy"
   ];
 
-tableTitle = "CPI, y-on-y change in %";
+tableTitle = "Inflation (CPI), YoY % change";
 
 rprt = codes.reporting.addTablePage(opts, rprt, m, db, tableRange, varNames, tableTitle, legends, vLine);
 
 % Inflation table with qoq percent changes
 
 varNames   = [
-  "pct_cpi",       "Headline CPI, q-on-q change"
-  "pct_cpi_core",  "Core CPI, q-on-q change"
-  "pct_cpi_food",  "Food CPI, q-on-q change"
-  "pct_cpi_ener",  "Energy CPI, q-on-q change"
+  "pct_cpi",       "Headline"
+  "pct_cpi_core",  "Core"
+  "pct_cpi_food",  "Food"
+  "pct_cpi_ener",  "Energy"
   ];
 
-tableTitle = "CPI, q-on-q change in %, annualized";
+tableTitle = "Inflation (CPI), QoQ % change annualized";
 
 rprt = codes.reporting.addTablePage(opts, rprt, m, db, tableRange, varNames, tableTitle, legends, vLine);
 
 % Fiscal indicators
 
 varNames   = [
-  "def_y",        "Deficit, percent of GDP"
-  "def_y_str",    "Str. deficit, percent of GDP"
-  "def_y_cyc",    "Cyc. deficit, percent of GDP"
-  "def_y_discr",  "Discr. deficit, percent of GDP"
-  "fisc_imp",     "Fiscal impulse, percent of GDP"
+  "def_y",        "Deficit (excl. grants)"
+  "def_y_str",    "Structural"
+  "def_y_cyc",    "Cyclical"
+  "def_y_discr",  "Discretional"
+  "fisc_imp",     "Fiscal impulse"
   ];
 
-tableTitle = "Fiscal indicators";
+tableTitle = "Fiscal/bugdet, % of GDP";
 
 rprt = codes.reporting.addTablePage(opts, rprt, m, db, tableRange, varNames, tableTitle, legends, vLine);
 
 % Auxiliary model results
 
 varNames    =  [
-"def_y",      "Deficit, % of GDP"
+"def_y",      "Deficit (excl. grants), % of GDP"
 "grants_y",   "Grants, % of GDP"
-"def_fcy_y",  "Net foreign financing deficit, % of GDP"
-"def_lcy_y",  "Net domestic financing deficit, % of GDP"
+"def_fcy_y",  "Deficit in foreign currency, % of GDP"
+"def_lcy_y",  "Deficit in local currency, % of GDP"
 "debt_fcy_y", "Debt in foreign currency, % of GDP"
 "debt_lcy_y", "Debt in local currency, % of GDP"
 "tb_rat",     "Resource balance ratio % of GDP";
-"dBP_usd",    "Net private capital (incl.IMF-NBR), mln USD"
-"dl_md",      "Money demand, q-on-q annualized growth, in %"
-"dl_py",      "GDP deflator,q-on-q ann.growth,in % (from CPI,PM,PE)"
+"dBP_usd",    "Net private capital flows, Mln USD"
+"dl_md",      "Money demand, % QoQ ann."
+"dl_py",      "GDP deflator, % QoQ ann."
 ];
-tableTitle = "Auxiliary model results";
+tableTitle = "Other reporting indicators";
 
 rprt = codes.reporting.addTablePage(opts, rprt, m, db, tableRange, varNames, tableTitle, legends, vLine);
 
@@ -179,9 +179,9 @@ varNames   = [
   "d4l_cpi"
   "d4l_y"
   "i"
-  "r" ; % ak added Dec 29
+  "r" ; 
   "d4l_s"
-  "d4l_z" ; % ak added Dec 29
+  "d4l_z" ;
   "def_y"
   ];
 
@@ -200,7 +200,7 @@ varNames   = [
   "d4l_imp"
   ];
 
-figureTitle = "GDP growth, y-on-y";
+figureTitle = "GDP final demand, YoY % change";
 
 rprt = codes.reporting.addChartPage(opts, rprt, m, db, plotRange, varNames, figureTitle, legends, highlightRange);
 
@@ -215,7 +215,7 @@ varNames   = [
   "dl_imp"
   ];
 
-figureTitle = "GDP growth, q-on-q";
+figureTitle = "GDP final demand, QoQ % change";
 
 rprt = codes.reporting.addChartPage(opts, rprt, m, db, plotRange, varNames, figureTitle, legends, highlightRange);
 
@@ -228,7 +228,7 @@ varNames   = [
   "d4l_cpi_ener"
   ];
 
-figureTitle = "Inflation, y-on-y";
+figureTitle = "GDP final demand, QoQ % change";
 
 rprt = codes.reporting.addChartPage(opts, rprt, m, db, plotRange, varNames, figureTitle, legends, highlightRange);
 
@@ -241,7 +241,7 @@ varNames   = [
   "dl_cpi_ener"
   ];
 
-figureTitle = "Inflation, q-on-q";
+figureTitle = "Inflation (CPI), YoY %change";
 
 rprt = codes.reporting.addChartPage(opts, rprt, m, db, plotRange, varNames, figureTitle, legends, highlightRange);
 
@@ -255,7 +255,7 @@ varNames   = [
   "fisc_imp"
   ];
 
-figureTitle = "Budget deficit";
+figureTitle = "Fiscal/bugdet, % of GDP";
 
 rprt = codes.reporting.addChartPage(opts, rprt, m, db, plotRange, varNames, figureTitle, legends, highlightRange);
 
@@ -267,7 +267,7 @@ varNames   = [
   "r4_gap"
   ];
 
-figureTitle = "Main cyclical indicators";
+figureTitle = "Main cyclical position (gap) indicators";
 
 rprt = codes.reporting.addChartPage(opts, rprt, m, db, plotRange, varNames, figureTitle, legends, highlightRange);
 
@@ -281,7 +281,7 @@ varNames   = [
   "l_imp_gap"
   ];
 
-figureTitle = "GDP cyclical indicators";
+figureTitle = "GDP cyclical position (gap)";
 
 rprt = codes.reporting.addChartPage(opts, rprt, m, db, plotRange, varNames, figureTitle, legends, highlightRange);
 
@@ -298,7 +298,7 @@ varNames   = [
   "l_rp_enerstar_gap"
   ];
 
-figureTitle = "External variables";
+figureTitle = "External/foreign, exogenous";
 
 rprt = codes.reporting.addChartPage(opts, rprt, m, db, plotRange, varNames, figureTitle, legends, highlightRange);
 

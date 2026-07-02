@@ -17,7 +17,7 @@ optsComp = optsCurr.compOpts;
 
 tmp_curr = codes.utils.loadResult(optsCurr, "filter");
 tmp_comp = codes.utils.loadResult(optsComp, "filter");
-%tmp_comp = codes.utils.loadResult(optsCurr, "filtComp"); % can be used to
+% tmp_comp = codes.utils.loadResult(optsCurr, "filtComp"); % can be used to
 % for comparison of filter results in same round as historical tuning
 % options altered.
 
@@ -43,7 +43,7 @@ db_comp = tmp_comp.dbFilt.mean;
 
 fields = {'l_cons_tnd', 'l_cons_gap', 'l_inv_tnd','l_inv_gap','l_gdem_tnd','l_gdem_gap',...
     'l_exp_gap', 'l_exp_tnd', 'l_imp_gap', 'l_imp_tnd','l_y_gap', 'l_y_tnd', 'l_y_agr_tnd',...
-    'l_y_agr_gap', 'l_z_tnd', 'l_z_gap', 'l_rp_cpi_core_tnd', 'l_rp_cpi_core_gap',... 
+    'l_y_agr_gap', 'l_z_tnd','l_z_gap', 'l_rp_cpi_core_tnd', 'l_rp_cpi_core_gap',... 
     'l_rp_cpi_food_tnd', 'l_rp_cpi_food_gap', 'l_rp_cpi_ener_tnd', 'l_rp_cpi_ener_gap', 'i_tnd',...
     'def_y_str', 'gdem_y_str', 'oexp_y_str', 'grev_y_str'};
 
