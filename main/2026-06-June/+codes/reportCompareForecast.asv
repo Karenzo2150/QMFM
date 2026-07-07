@@ -27,10 +27,11 @@ dbCurr  = tmp.dbFcast;
 % dbDecomp  = tmp.dbDecomp;
 
 % Keep only the first column (maybe select by scenario name??)
-dbCurr = databank.retrieveColumns(dbCurr,1);
+dbCurr = databank.retrieveColumns(dbCurr, 1);
 
 % Load the compared forecast
 tmp = codes.utils.loadResult(optsPrev, "forecast");
+% tmp = codes.utils.loadResult(optsPrev, "forecastComp");
 dbComp  = tmp.dbFcast;
 % dbDecompc  = tmp.dbDecomp;
 
@@ -266,7 +267,7 @@ varNames   = [
 rprt = codes.reporting.addChartPage(optsCurr, rprt, m, dbCompFcast, plotRange, varNames, figureTitle, legends, highLightRange);
 
 % Main cyclical indicators
-figureTitle = "Main cyclical position (gap)";
+figureTitle = "Main cyclical position (gap) indicators";
 varNames   = [
   "l_y_gap"
   "l_z_gap"

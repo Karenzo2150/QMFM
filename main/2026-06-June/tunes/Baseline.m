@@ -14,7 +14,7 @@ dbOrig      = tmp.db;
 % % historical trend intact)
 % % interest policy rule response to output gap
 
-%% Fiscal
+%% Fiscal assumptions in long-term  (beyond IMF program, should be recalibrated after a new program negociation
 
 m.ss_grev_y_str =  24; % put MTRS target of 23% (before 21%, hist ss was 17-18%)
 m.ss_oexp_y_str =  6-0.5; % 1 pps down from historical s-state

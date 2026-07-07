@@ -17,8 +17,8 @@ function dbObs = Historical(dbObs)  %
 % the outgap is set low to allow GDP level move close to trend to
 % incoporate the assumption that COVID-19 outbreak has had a potential
 % effect in GDP growth
-rngTune = qq(2022, 4);
-dbObs.tune_l_y_gap(rngTune) = -2;
+% rngTune = qq(2022, 4);
+% dbObs.tune_l_y_gap(rngTune) = -2;
 
 % to allow somewhat significant effect of fiscal policies (gdem gap) on output gap in COVID, we allow the govt demand trend/structual bend  down during 2019-2023, 
 % so we set gdem_y trend slightly lower y 2% points of GDP: bend down structural govt demand 2017-2023
@@ -28,8 +28,8 @@ dbObs.tune_l_y_gap(rngTune) = -2;
 %dbObs.tune_gdem_y_str(rngTune) = dbObs.tune_gdem_y_str-2;
 
 %% easier: set structural level of govt demand
-rngTune = qq(2017, 1): qq(2024, 2);
-dbObs.tune_gdem_y_str(rngTune) = 24.5;
+% rngTune = qq(2017, 1): qq(2024, 2);
+% dbObs.tune_gdem_y_str(rngTune) = 24.5;
 
 %% GDP extended filter for Nowcast Q 2026Q2, alternatively tune most recent Q with prel. NA
 % filtration range set to a few Q beyond data (here: 2025Q2-3 with hist tunes for y-on-y GDP growth from Nowcast(no s.a. needed)

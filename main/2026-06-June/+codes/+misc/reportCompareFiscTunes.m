@@ -39,7 +39,7 @@ for v = varNames(:)'
   fiscTunes.(v)  = Series(qq(2024, 3), values);
 end
 codes.utils.writeMessage(mfilename + ": saving results ...");
-codes.utils.saveResult(opts, "fiscQmfmTunes", "fiscTunes");
+codes.utils.saveResult(opts, "fiscTunes", "fiscTunes");
 
 %% QMFM Tuning Adj.
 
@@ -74,7 +74,7 @@ for v = varNames(:)'
   fiscTunes.(v)  = Series(qq(2024, 3), values);
 end
 codes.utils.writeMessage(mfilename + ": saving results ...");
-codes.utils.saveResult(opts, "fiscQmfmTunes", "fiscTunes");
+codes.utils.saveResult(opts, "fiscTunes", "fiscTunes");
 codes.utils.writeMessage(mfilename + ": done");
 
 %% Comparison charts reporting

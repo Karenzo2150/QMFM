@@ -27,10 +27,13 @@ dbCurr  = tmp.dbFcast;
 % dbDecomp  = tmp.dbDecomp;
 
 % Keep only the first column (maybe select by scenario name??)
-dbCurr = databank.retrieveColumns(dbCurr,1);
+dbCurr = databank.retrieveColumns(dbCurr, 1);
 
 % Load the compared forecast
-tmp = codes.utils.loadResult(optsPrev, "forecast");
+% tmp = codes.utils.loadResult(optsPrev, "forecast");
+tmp = codes.utils.loadResult(optsPrev, "forecastComp"); % can be used to
+% for comparison of forecast results in same round as historical tuning
+% options altered. "forecast should be renamed to forecastComp"
 dbComp  = tmp.dbFcast;
 % dbDecompc  = tmp.dbDecomp;
 
